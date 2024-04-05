@@ -1,8 +1,5 @@
 using System.Linq.Expressions;
 using AuthMicroservice.Domain.Entities;
-using AuthMicroservice.Domain.Interfaces;
-using AuthMicroservice.Domain.Interfaces.DTOs;
-using AuthMicroservice.Domain.Interfaces.Entities;
 using AuthMicroservice.Domain.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,12 +27,12 @@ namespace AuthMicroservice.Infrastructure.DataAccess.Repositories
             return await Task.FromResult(_dbSet.AsQueryable());
         }
 
-        public IUser GetById(Guid id)
+        public IUser GetDetail(Guid id)
         {
             return _dbSet.Find(id)!;
         }
 
-        public async Task<IUser> GetByIdAsync(Guid id)
+        public async Task<IUser> GetDetailAsync(Guid id)
         {
             return await _dbSet.SingleOrDefaultAsync(x => x.Id == id);
         }
@@ -68,14 +65,14 @@ namespace AuthMicroservice.Infrastructure.DataAccess.Repositories
         
         public bool Update(IUser entity)
         {
-        var user = GetById(entity.Id)!;
+        var user = GetDetail(entity.Id)!;
         _dbSet.Update(user);
         return true;
         }
 
         public async Task<bool> UpdateAsync(Guid id, IUser entity)
         {
-        var user = await GetByIdAsync(id);
+        var user = await GetDetailAsync(id);
         _dbSet.Update(user);
 
         return await Task.FromResult(true);
@@ -86,14 +83,14 @@ namespace AuthMicroservice.Infrastructure.DataAccess.Repositories
 
         public bool Delete(Guid id)
         {
-        var user = GetById(id)!;
+        var user = GetDetail(id)!;
         _dbSet.Remove(user);
         return Save();
         }
 
         public async Task<bool> DeleteAsync(Guid id)
         {
-        var user = await GetByIdAsync(id)!;
+        var user = await GetDetailAsync(id)!;
         _dbSet.Remove(user!);
         return await SaveAsync();
         }

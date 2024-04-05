@@ -17,6 +17,17 @@
           "AuthMicroservice.Infrastructure.dll": {}
         }
       },
+      "AutoMapper/13.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Options": "8.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/AutoMapper.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.0"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
@@ -446,6 +457,36 @@
           }
         }
       },
+      "Microsoft.IdentityModel.Abstractions/7.5.0": {
+        "runtime": {
+          "lib/net8.0/Microsoft.IdentityModel.Abstractions.dll": {
+            "assemblyVersion": "7.5.0.0",
+            "fileVersion": "7.5.0.50326"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Logging/7.5.0": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Abstractions": "7.5.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.IdentityModel.Logging.dll": {
+            "assemblyVersion": "7.5.0.0",
+            "fileVersion": "7.5.0.50326"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Tokens/7.5.0": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Logging": "7.5.0"
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.IdentityModel.Tokens.dll": {
+            "assemblyVersion": "7.5.0.0",
+            "fileVersion": "7.5.0.50326"
+          }
+        }
+      },
       "Mono.TextTemplating/2.2.1": {
         "dependencies": {
           "System.CodeDom": "4.4.0"
@@ -697,9 +738,11 @@
       "System.Threading.Channels/6.0.0": {},
       "AuthMicroservice.Domain/1.0.0": {
         "dependencies": {
+          "AutoMapper": "13.0.1",
           "Microsoft.EntityFrameworkCore": "8.0.3",
           "Microsoft.EntityFrameworkCore.Design": "8.0.3",
-          "Microsoft.EntityFrameworkCore.Sqlite": "8.0.3"
+          "Microsoft.EntityFrameworkCore.Sqlite": "8.0.3",
+          "Microsoft.IdentityModel.Tokens": "7.5.0"
         },
         "runtime": {
           "AuthMicroservice.Domain.dll": {}
@@ -712,6 +755,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AutoMapper/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/Fx1SbJ16qS7dU4i604Sle+U9VLX+WSNVJggk6MupKVkYvvBm4XqYaeFuf67diHefHKHs50uQIS2YEDFhPCakQ==",
+      "path": "automapper/13.0.1",
+      "hashPath": "automapper.13.0.1.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",
@@ -887,6 +937,27 @@
       "sha512": "sha512-bXJEZrW9ny8vjMF1JV253WeLhpEVzFo1lyaZu1vQ4ZxWUlVvknZ/+ftFgVheLubb4eZPSwwxBeqS1JkCOjxd8g==",
       "path": "microsoft.extensions.primitives/8.0.0",
       "hashPath": "microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.Abstractions/7.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-seOFPaBQh2K683eFujAuDsrO2XbOA+SvxRli+wu7kl+ZymuGQzjmmUKfyFHmDazpPOBnmOX1ZnjX7zFDZHyNIA==",
+      "path": "microsoft.identitymodel.abstractions/7.5.0",
+      "hashPath": "microsoft.identitymodel.abstractions.7.5.0.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.Logging/7.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3BInZEajJvnTDP/YRrmJ3Fyw8XAWWR9jG+3FkhhzRJJYItVL+BEH9qlgxSmtrxp7S7N6TOv+Y+X8BG61viiehQ==",
+      "path": "microsoft.identitymodel.logging/7.5.0",
+      "hashPath": "microsoft.identitymodel.logging.7.5.0.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.Tokens/7.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-owe33wqe0ZbwBxM3D90I0XotxNyTdl85jud03d+OrUOJNnTiqnYePwBk3WU9yW0Rk5CYX+sfSim7frmu6jeEzQ==",
+      "path": "microsoft.identitymodel.tokens/7.5.0",
+      "hashPath": "microsoft.identitymodel.tokens.7.5.0.nupkg.sha512"
     },
     "Mono.TextTemplating/2.2.1": {
       "type": "package",

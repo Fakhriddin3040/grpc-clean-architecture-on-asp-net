@@ -13,10 +13,22 @@
           "AuthMicroservice.Infrastructure": "1.0.0",
           "Grpc.AspNetCore": "2.62.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.3",
+          "Microsoft.EntityFrameworkCore.Tools": "8.0.3",
           "System.IdentityModel.Tokens.Jwt": "7.5.0"
         },
         "runtime": {
           "AuthMicroservice.Web.dll": {}
+        }
+      },
+      "AutoMapper/13.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.Options": "8.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/AutoMapper.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.1.0"
+          }
         }
       },
       "Google.Protobuf/3.24.0": {
@@ -454,6 +466,11 @@
           }
         }
       },
+      "Microsoft.EntityFrameworkCore.Tools/8.0.3": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "8.0.3"
+        }
+      },
       "Microsoft.Extensions.Caching.Abstractions/8.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "8.0.0"
@@ -851,9 +868,11 @@
       },
       "AuthMicroservice.Domain/1.0.0": {
         "dependencies": {
+          "AutoMapper": "13.0.1",
           "Microsoft.EntityFrameworkCore": "8.0.3",
           "Microsoft.EntityFrameworkCore.Design": "8.0.3",
-          "Microsoft.EntityFrameworkCore.Sqlite": "8.0.3"
+          "Microsoft.EntityFrameworkCore.Sqlite": "8.0.3",
+          "Microsoft.IdentityModel.Tokens": "7.5.0"
         },
         "runtime": {
           "AuthMicroservice.Domain.dll": {}
@@ -876,6 +895,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AutoMapper/13.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/Fx1SbJ16qS7dU4i604Sle+U9VLX+WSNVJggk6MupKVkYvvBm4XqYaeFuf67diHefHKHs50uQIS2YEDFhPCakQ==",
+      "path": "automapper/13.0.1",
+      "hashPath": "automapper.13.0.1.nupkg.sha512"
     },
     "Google.Protobuf/3.24.0": {
       "type": "package",
@@ -1065,6 +1091,13 @@
       "sha512": "sha512-6DvYtnLdpViXgA5F2Z/cIJfWIv31Eby5j2YqUzr+sgJulKtCX+ypvmfooXlYnCwJDlcmIaMY27TMnlrCcUvZmA==",
       "path": "microsoft.entityframeworkcore.sqlite.core/8.0.3",
       "hashPath": "microsoft.entityframeworkcore.sqlite.core.8.0.3.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Tools/8.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jKczLbj13jY6TvYsXgAYqfhkIow6VdqumCv0m8EvNr3vU1+nJ6LKoG+6pPKnkVOHycXHGy5DEhH0GN0ldmx7Kw==",
+      "path": "microsoft.entityframeworkcore.tools/8.0.3",
+      "hashPath": "microsoft.entityframeworkcore.tools.8.0.3.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/8.0.0": {
       "type": "package",

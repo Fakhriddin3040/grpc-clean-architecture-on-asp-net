@@ -19,7 +19,7 @@ public class SqlRepository<T> : ISqlRepository<T>, ISqlRepositoryAsync<T> where 
 		return _context.Set<T>();
 	}
 
-	public T GetById(Guid id)
+	public T GetDetail(Guid id)
 	{
 		return _context.Set<T>().SingleOrDefault(v => v.Id == id)!;
 	}
@@ -74,7 +74,7 @@ public class SqlRepository<T> : ISqlRepository<T>, ISqlRepositoryAsync<T> where 
 		return await _context.SaveChangesAsync() > 0;
 	}
 
-	public async Task<T> GetByIdAsync(Guid id)
+	public async Task<T> GetDetailAsync(Guid id)
 	{
 		return await _context.Set<T>().SingleOrDefaultAsync(v => v.Id == id);
 	}

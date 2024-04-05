@@ -1,8 +1,10 @@
 using System.Linq;
+using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
 using AuthMicroservice.Application.DTOs;
 using AuthMicroservice.Domain.Entities;
 using AuthMicroservice.Domain.Interfaces.DTOs;
+using AuthMicroservice.Domain.Interfaces.Entities;
 using AuthMicroservice.Domain.Interfaces.Repositories;
 using AuthMicroservice.Domain.Interfaces.Services;
 using Grpc.Core;
@@ -14,54 +16,54 @@ namespace AuthMicroservice.Application.Services
         private readonly IUserRepository _repository;
         public UserService(IUserRepository repository)
         {
-            
             _repository = repository;
         }
 
-    public IQueryable<IUserListDTO> GetAll()
-    {
-        return _repository.GetAll();
-    }
-
-    public Guid Authenticate(string username, string password)
-    {
-        var user = _repository.GetByUsername(username);
-
-        if (user == null)
+        public bool Exists(Expression<Func<IUser, bool>> expression)
         {
-            throw new RpcException(
-                new Status(StatusCode.NotFound, "User not found"));
+            return _repository.Any(expression);
         }
 
-        return user.Id;
-    }
+        public Guid Authenticate(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
 
-    public async Task<Guid> AuthecticateAsync(string username, string password)
-	{
-		var user = await _repository.GetByUsernameAsync(username);
+        public IUserListDTO Create(IUser user)
+        {
+            IUser newUser = new User
+            {
+                Username = user.Username,
+                Password = user.Password,
+                Role = user.Role,
+            };
+            _repository.Create(newUser);
+            return newUser as IUserListDTO;
+        }
 
-		if (user == null)
-		{
-			throw new RpcException(
-				new Status(StatusCode.NotFound, "User not found"));
-		}
+        public IQueryable<IUserListDTO> GetAll()
+        {
+            return _repository.GetAll().Select(u => u as IUserListDTO);
+        }
 
-		return user.Id;
-	}
+        public IUserDetailDTO GetDetail(Guid id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public IUserListDTO Update(IUserUpdateDTO user)
+        {
+            throw new NotImplementedException();
+        }
 
-    public async Task<Guid> AuthenticateAsync(string username, string password)
-    {
-        var user = (await _repository.GetAllAsync()).FirstOrDefault( x =>
-            x.Username == username && x.Password == password
-            );
+        public void Delete(Guid id)
+        {
+            throw new NotImplementedException();
+        }
 
-        if (user == null)
-            throw new RpcException(
-                new Status(StatusCode.NotFound, "User not found")
-            );
-
-        return user.Id;
-    }
+        public bool SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

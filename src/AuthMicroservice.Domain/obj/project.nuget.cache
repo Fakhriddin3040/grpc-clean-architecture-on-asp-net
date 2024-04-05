@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "b/jJboSbMcFpPk5rIih73qCbT96PRW9lkDAPmaJgCqnfYLL2FzTgM8RKgsBQg70n03tHna7+ocBa7lzgetXEXw==",
+  "dgSpecHash": "xOiuH8l1mNxAO7elMdj/JJXxVgd8UHoRNvu8puRmNlSAEkvS99UN2rSPG5WEJEAcuuGwBkkgFZdjJWRE8PrLzQ==",
   "success": true,
   "projectFilePath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj",
   "expectedPackageFiles": [
@@ -30,6 +30,9 @@
     "/home/ren/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.0/microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.extensions.options/8.0.0/microsoft.extensions.options.8.0.0.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "/home/ren/.nuget/packages/microsoft.identitymodel.abstractions/7.5.0/microsoft.identitymodel.abstractions.7.5.0.nupkg.sha512",
+    "/home/ren/.nuget/packages/microsoft.identitymodel.logging/7.5.0/microsoft.identitymodel.logging.7.5.0.nupkg.sha512",
+    "/home/ren/.nuget/packages/microsoft.identitymodel.tokens/7.5.0/microsoft.identitymodel.tokens.7.5.0.nupkg.sha512",
     "/home/ren/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/home/ren/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.1.6/sqlitepclraw.bundle_e_sqlite3.2.1.6.nupkg.sha512",
     "/home/ren/.nuget/packages/sqlitepclraw.core/2.1.6/sqlitepclraw.core.2.1.6.nupkg.sha512",

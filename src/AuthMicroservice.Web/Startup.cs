@@ -1,6 +1,7 @@
 using System.Text;
 using AuthMicroservice.Application;
 using AuthMicroservice.Application.Services;
+using AuthMicroservice.Domain.Configurations;
 using AuthMicroservice.Domain.Interfaces;
 using AuthMicroservice.Domain.Interfaces.Repositories;
 using AuthMicroservice.Domain.Interfaces.Services;
@@ -28,7 +29,10 @@ namespace AuthMicroservice.Web
 
 			services.AddDbContext<AuthDbContext>(options =>
 				{
-					options.UseSqlite("Data Source=auth.db");
+					options.UseSqlite(b => 
+					{
+						b.MigrationsAssembly("/");
+					});
 				});
 
 			services.AddScoped<IUserRepository, UserRepository>();
@@ -47,9 +51,9 @@ namespace AuthMicroservice.Web
 						ValidateAudience = true,
 						ValidateLifetime = true,
 						ValidateIssuerSigningKey = true,
-						ValidIssuer = issuer,
-						ValidAudience = issuer,
-						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key!))
+						ValidIssuer = JwtAuthOptions.Issuer,
+						ValidAudience = JwtAuthOptions.Audience,
+						IssuerSigningKey = JwtAuthOptions.GetSymmetricSecurityKey()
 					};
 				});
 

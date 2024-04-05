@@ -4,7 +4,7 @@ using AuthMicroservice.Domain.ValueObjects;
 
 namespace AuthMicroservice.Domain.Entities;
 
-public class User : IGuid, IBaseUser, IPerson
+public class User : IGuid, IUser, IBaseUser, IPerson
 {
     public Guid Id { get; set; }
     public string Username { get; set; }
@@ -16,8 +16,8 @@ public class User : IGuid, IBaseUser, IPerson
     public int Age { get; set; }
     public Contacts Contacts { get; set; }
     public DateOnly Birthday { get; set; }
-    public IBaseUser CreatedBy { get; set; }
-    public IBaseUser UpdatedBy { get; set; }
+    // public IBaseUser CreatedBy { get; set; }
+    // public IBaseUser UpdatedBy { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 }

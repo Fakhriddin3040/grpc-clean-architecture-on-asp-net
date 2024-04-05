@@ -1363,7 +1363,8 @@
           "AutoMapper": "13.0.1",
           "Microsoft.EntityFrameworkCore": "8.0.3",
           "Microsoft.EntityFrameworkCore.Design": "8.0.3",
-          "Microsoft.EntityFrameworkCore.Sqlite": "8.0.3"
+          "Microsoft.EntityFrameworkCore.Sqlite": "8.0.3",
+          "Microsoft.IdentityModel.Tokens": "7.5.0"
         },
         "compile": {
           "bin/placeholder/AuthMicroservice.Domain.dll": {}

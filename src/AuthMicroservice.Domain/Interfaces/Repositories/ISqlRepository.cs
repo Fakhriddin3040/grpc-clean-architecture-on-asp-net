@@ -7,7 +7,7 @@ namespace AuthMicroservice.Domain.Interfaces.Repositories;
 public interface ISqlRepository<T>
 {
 	IQueryable<T> GetAll();
-	T GetById(Guid id);
+	T GetDetail(Guid id);
 	bool Create(T obj);
 	bool Update(Guid id, T obj);
 	bool Delete(Guid id);

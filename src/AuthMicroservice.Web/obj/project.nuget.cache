@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+8KdXINVoooqeqpkY5wu2V8fTNBXsVrdHQd5aTxRDxwSfgv3zUSOKIXPY7/F/eNWszSsAjZ+AZMv9rcUTEu1Qg==",
+  "dgSpecHash": "iPot+If0+m7MHeqvJCKjFAmd4ZgFBRIOd2jXSh/+ODEs/7lVyMxcGjLMUZk4a1d8ncjrHfOIjeZuA7cKuNoDYg==",
   "success": true,
   "projectFilePath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Web/AuthMicroservice.Web.csproj",
   "expectedPackageFiles": [
@@ -32,6 +32,7 @@
     "/home/ren/.nuget/packages/microsoft.entityframeworkcore.relational/8.0.3/microsoft.entityframeworkcore.relational.8.0.3.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.entityframeworkcore.sqlite/8.0.3/microsoft.entityframeworkcore.sqlite.8.0.3.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.entityframeworkcore.sqlite.core/8.0.3/microsoft.entityframeworkcore.sqlite.core.8.0.3.nupkg.sha512",
+    "/home/ren/.nuget/packages/microsoft.entityframeworkcore.tools/8.0.3/microsoft.entityframeworkcore.tools.8.0.3.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.extensions.caching.abstractions/8.0.0/microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.extensions.caching.memory/8.0.0/microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0/microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
