@@ -1,0 +1,327 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Web/AuthMicroservice.Web.csproj": {}
+  },
+  "projects": {
+    "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/AuthMicroservice.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/AuthMicroservice.Application.csproj",
+        "projectName": "AuthMicroservice.Application",
+        "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/AuthMicroservice.Application.csproj",
+        "packagesPath": "/home/ren/.nuget/packages/",
+        "outputPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ren/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj": {
+                "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.62.0, )"
+            },
+            "Grpc.AspNetCore.Server.Reflection": {
+              "target": "Package",
+              "version": "[2.62.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj",
+        "projectName": "AuthMicroservice.Domain",
+        "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj",
+        "packagesPath": "/home/ren/.nuget/packages/",
+        "outputPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ren/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Infrastructure/AuthMicroservice.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Infrastructure/AuthMicroservice.Infrastructure.csproj",
+        "projectName": "AuthMicroservice.Infrastructure",
+        "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Infrastructure/AuthMicroservice.Infrastructure.csproj",
+        "packagesPath": "/home/ren/.nuget/packages/",
+        "outputPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ren/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj": {
+                "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Web/AuthMicroservice.Web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Web/AuthMicroservice.Web.csproj",
+        "projectName": "AuthMicroservice.Web",
+        "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Web/AuthMicroservice.Web.csproj",
+        "packagesPath": "/home/ren/.nuget/packages/",
+        "outputPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Web/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ren/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/AuthMicroservice.Application.csproj": {
+                "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/AuthMicroservice.Application.csproj"
+              },
+              "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj": {
+                "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj"
+              },
+              "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Infrastructure/AuthMicroservice.Infrastructure.csproj": {
+                "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Infrastructure/AuthMicroservice.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.62.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

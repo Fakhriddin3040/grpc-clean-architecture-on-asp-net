@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.62.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AuthMicroservice.Application\AuthMicroservice.Application.csproj" />
+    <ProjectReference Include="..\AuthMicroservice.Domain\AuthMicroservice.Domain.csproj" />
+    <ProjectReference Include="..\AuthMicroservice.Infrastructure\AuthMicroservice.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

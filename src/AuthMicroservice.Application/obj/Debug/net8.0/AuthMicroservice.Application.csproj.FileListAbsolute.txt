@@ -1,0 +1,16 @@
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/bin/Debug/net8.0/AuthMicroservice.Application.deps.json
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/bin/Debug/net8.0/AuthMicroservice.Application.dll
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/bin/Debug/net8.0/AuthMicroservice.Application.pdb
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/Debug/net8.0/AuthMicroservice.Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/Debug/net8.0/AuthMicroservice.Application.AssemblyInfoInputs.cache
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/Debug/net8.0/AuthMicroservice.Application.AssemblyInfo.cs
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/Debug/net8.0/AuthMicroservice.Application.csproj.CoreCompileInputs.cache
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/Debug/net8.0/AuthMicroservice.Application.sourcelink.json
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/Debug/net8.0/AuthMicroservice.Application.dll
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/Debug/net8.0/refint/AuthMicroservice.Application.dll
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/Debug/net8.0/AuthMicroservice.Application.pdb
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/Debug/net8.0/ref/AuthMicroservice.Application.dll
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/bin/Debug/net8.0/AuthMicroservice.Domain.dll
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/bin/Debug/net8.0/AuthMicroservice.Domain.pdb
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/Debug/net8.0/AuthMicroservice.Application.csproj.AssemblyReference.cache
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/Debug/net8.0/AuthMicr.75C00BBD.Up2Date

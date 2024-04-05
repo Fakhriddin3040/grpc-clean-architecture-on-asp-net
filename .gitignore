@@ -1,0 +1,27 @@
+# Visual Studio и .NET
+.vs/
+*.suo
+*.user
+*.sln.docstates
+*.sln.ide-shutdownstate
+*.sln.ide-shadow
+*.sqlproj.user
+*.sw?
+
+# Пакеты
+/bin/
+/obj/
+/packages/
+
+# Остальное
+Thumbs.db
+[Tt]humbs.db
+Desktop.ini
+*.log
+
+# Исключение файлов проекта и конфигурации
+*.csproj.user
+*.user
+*.vscode/
+.vscode/
+.vs/

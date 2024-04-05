@@ -1,0 +1,2 @@
+obj/Debug/net8.0/JwtAuth.cs \
+obj/Debug/net8.0/JwtAuthGrpc.cs: ../../Protos/JwtAuth.proto

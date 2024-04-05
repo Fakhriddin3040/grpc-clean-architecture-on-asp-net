@@ -1,0 +1,15 @@
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/bin/Debug/net8.0/AuthMicroservice.Domain.deps.json
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/bin/Debug/net8.0/AuthMicroservice.Domain.dll
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/bin/Debug/net8.0/AuthMicroservice.Domain.pdb
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/obj/Debug/net8.0/AuthMicroservice.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/obj/Debug/net8.0/AuthMicroservice.Domain.AssemblyInfoInputs.cache
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/obj/Debug/net8.0/AuthMicroservice.Domain.AssemblyInfo.cs
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/obj/Debug/net8.0/AuthMicroservice.Domain.csproj.CoreCompileInputs.cache
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/obj/Debug/net8.0/AuthMicroservice.Domain.sourcelink.json
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/obj/Debug/net8.0/AuthMicroservice.Domain.dll
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/obj/Debug/net8.0/refint/AuthMicroservice.Domain.dll
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/obj/Debug/net8.0/AuthMicroservice.Domain.pdb
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/obj/Debug/net8.0/ref/AuthMicroservice.Domain.dll
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/bin/Debug/net8.0/AuthMicroservice.Domain.runtimeconfig.json
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/obj/Debug/net8.0/AuthMicroservice.Domain.csproj.AssemblyReference.cache
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/obj/Debug/net8.0/AuthMicroservice.Domain.genruntimeconfig.cache
