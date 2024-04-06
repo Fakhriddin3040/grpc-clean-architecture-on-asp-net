@@ -10,9 +10,9 @@ namespace AuthMicroservice.Domain.Configurations
 
         public const int LIFETIME = 5000;
         
-        public const string Issuer = "AuthMicroservice";
+        public const string ISSUER = "AuthMicroservice";
 
-        public const string Audience = "AuthMicroservice";
+        public const string AUDIENCE = "AuthMicroservice";
 
         public static DateTime GetExpireTime() =>
 			DateTime.Now.AddDays(120);

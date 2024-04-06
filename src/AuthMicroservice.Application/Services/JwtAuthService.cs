@@ -1,19 +1,13 @@
-using System.Text;
 using AuthMicroservice.Protos;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Grpc.Core;
-using Microsoft.Extensions.Configuration;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using AuthMicroservice.Domain.Entities;
 using AuthMicroservice.Domain.Interfaces.Services;
 using AuthMicroservice.Domain.Configurations;
-using System.Security.Cryptography;
-using AuthMicroservice.Domain.ValueObjects;
 using AuthMicroservice.Domain.Interfaces.DTOs;
-using AuthMicroservice.Application.DTOs;
 
 namespace AuthMicroservice.Application;
 
@@ -28,22 +22,24 @@ public class JwtAuthService: JwtAuthProtoService.JwtAuthProtoServiceBase
 
     public override Task<SuccessJwtLoginResponse> Login(LoginRequest request, ServerCallContext context)
     {
+        IUser user = new User() {
+            Username = request.Username,
+            Password = request.Password,
+        };
+        _userService.Create(user);
         return Task.FromResult(new SuccessJwtLoginResponse
         {
-            Token = "YouRToken"
+            Token = ""
         });
     }
 
     public override Task<SuccessJwtLoginResponse> Register(RegisterRequest request, ServerCallContext context)
     {
-        var user = new User
-        {
-            Username = request.Username,
-            Password = request.Password,
-        };
-        IUserListDTO newUser = _userService.Create(user);
+        IQueryable<IUserListDTO> users = _userService.GetAll();
 
-        var token = GetAccessToken(user.Id);
+        var token = GetAccessToken(Guid.NewGuid());
+
+        Console.WriteLine(users);
 
         return Task.FromResult(new SuccessJwtLoginResponse
         {
@@ -72,8 +68,8 @@ public class JwtAuthService: JwtAuthProtoService.JwtAuthProtoServiceBase
 			new Claim(ClaimTypes.NameIdentifier, id.ToString())
 		};
 		return await WriteJwtAccessToken(new JwtSecurityToken(
-			issuer: JwtAuthOptions.Issuer,
-			audience: JwtAuthOptions.Audience,
+			issuer: JwtAuthOptions.ISSUER,
+			audience: JwtAuthOptions.AUDIENCE,
 			claims: claims,
 			expires: JwtAuthOptions.GetExpireTime(),
 			signingCredentials: GetSigningCredentials().Result

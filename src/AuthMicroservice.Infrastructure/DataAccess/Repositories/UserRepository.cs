@@ -8,115 +8,51 @@ namespace AuthMicroservice.Infrastructure.DataAccess.Repositories
 	public class UserRepository : IUserRepository
 	{
         private readonly AuthDbContext _context;
-        private DbSet<IUser> _dbSet => _context.Set<IUser>();
-
-#region Get Methods
 
         public UserRepository(AuthDbContext authDbContext)
         {
             _context = authDbContext;
         }
         
-		public IQueryable<IUser> GetAll()
+        public async Task<IQueryable<User>> GetAll()
         {
-            return _dbSet.AsQueryable();
+            return await Task.FromResult(_context.Users.AsQueryable());
         }
 
-        public async Task<IQueryable<IUser>> GetAllAsync()
+        public async Task<User> GetDetail(Guid id)
         {
-            return await Task.FromResult(_dbSet.AsQueryable());
+            return await _context.Users.SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public IUser GetDetail(Guid id)
+        public async Task<User> GetByUsername(string username)
         {
-            return _dbSet.Find(id)!;
+            return await _context.Users.SingleOrDefaultAsync(x => x.Username == username);
         }
 
-        public async Task<IUser> GetDetailAsync(Guid id)
+        public async Task Create(User entity)
         {
-            return await _dbSet.SingleOrDefaultAsync(x => x.Id == id);
-        }
-
-        public IUser GetByUsername(string username)
-        {
-            return _dbSet.SingleOrDefault(x => x.Username == username);
-        }
-
-        public async Task<IUser> GetByUsernameAsync(string username)
-        {
-            return await _dbSet.SingleOrDefaultAsync(
-                x => x.Username == username);
-        }
-
-#endregion
-
-#region Create and Update
-
-        public bool Create(IUser entity)
-        {
-            return default;
-        }
-
-        public async Task<bool> CreateAsync(IUser entity)
-        {
-        await _dbSet.AddAsync(entity);
-        return await SaveAsync();
+            await _context.Users.AddAsync(entity);
         }
         
-        public bool Update(IUser entity)
+        public async Task Update(Guid id, User entity)
         {
-        var user = GetDetail(entity.Id)!;
-        _dbSet.Update(user);
-        return true;
+        var user = await GetDetail(id);
+        _context.Users.Update(user);
         }
 
-        public async Task<bool> UpdateAsync(Guid id, IUser entity)
+        public async Task Delete(User entity)
         {
-        var user = await GetDetailAsync(id);
-        _dbSet.Update(user);
-
-        return await Task.FromResult(true);
-        }
-#endregion
-
-#region Delete
-
-        public bool Delete(Guid id)
-        {
-        var user = GetDetail(id)!;
-        _dbSet.Remove(user);
-        return Save();
+            _context.Users.Remove(entity);
         }
 
-        public async Task<bool> DeleteAsync(Guid id)
-        {
-        var user = await GetDetailAsync(id)!;
-        _dbSet.Remove(user!);
-        return await SaveAsync();
-        }
-
-#endregion
-
-#region Others
-        public bool Save()
-        {
-            return _context.SaveChanges() > 0;
-        }
-
-        public async Task<bool> SaveAsync()
+        public async Task<bool> SaveChanges()
         {
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public bool Any(Expression<Func<IUser, bool>> expression)
+        public async Task<bool> Any(Expression<Func<User, bool>> expression)
         {
-            return _dbSet.Any(expression);
-        }
-
-        public async Task<bool> AnyAsync(Expression<Func<IUser, bool>> expression)
-        {
-            return await _dbSet.AnyAsync(expression);
+            return await _context.Users.AnyAsync(expression);
         }
     }
-#endregion
 }

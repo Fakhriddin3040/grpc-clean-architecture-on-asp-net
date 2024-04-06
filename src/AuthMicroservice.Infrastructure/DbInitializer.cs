@@ -8,10 +8,6 @@ public class DbInitializer
 {
 	public static void Initialize(IAuthDbContext context)
 	{
-		context.Set<User>().Add(new User
-		{
-			Username = "admin",
-			Password = "admin",
-		});
+		var users = context.Users;
 	}
 }

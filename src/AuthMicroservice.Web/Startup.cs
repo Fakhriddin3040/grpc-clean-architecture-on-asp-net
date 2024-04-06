@@ -24,23 +24,20 @@ namespace AuthMicroservice.Web
 
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddDbContext<AuthDbContext>(options =>
+				{
+					options.UseSqlite(_configuration.GetConnectionString("DefaultConnection"), b =>
+					{
+						b.MigrationsAssembly("AuthMicroservice.Web");
+					});
+				});
 			services.AddGrpc();
 			services.AddGrpcReflection();
 
-			services.AddDbContext<AuthDbContext>(options =>
-				{
-					options.UseSqlite(b => 
-					{
-						b.MigrationsAssembly("/");
-					});
-				});
 
 			services.AddScoped<IUserRepository, UserRepository>();
 			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<AuthDbContext>();
-
-			var issuer = _configuration.GetSection("Jwt:Issuer").Get<string>();
-			var key = _configuration.GetSection("Jwt:Key").Get<string>();
 
 			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 				.AddJwtBearer(options =>
@@ -51,8 +48,8 @@ namespace AuthMicroservice.Web
 						ValidateAudience = true,
 						ValidateLifetime = true,
 						ValidateIssuerSigningKey = true,
-						ValidIssuer = JwtAuthOptions.Issuer,
-						ValidAudience = JwtAuthOptions.Audience,
+						ValidIssuer = JwtAuthOptions.ISSUER,
+						ValidAudience = JwtAuthOptions.AUDIENCE,
 						IssuerSigningKey = JwtAuthOptions.GetSymmetricSecurityKey()
 					};
 				});

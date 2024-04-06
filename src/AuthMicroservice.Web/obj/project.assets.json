@@ -1373,9 +1373,11 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "AuthMicroservice.Domain": "1.0.0",
+          "AutoMapper": "13.0.1",
           "Grpc.AspNetCore": "2.62.0",
           "Grpc.AspNetCore.Server.Reflection": "2.62.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.3",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
           "System.IdentityModel.Tokens.Jwt": "7.5.0"
         },
         "compile": {

@@ -6,20 +6,13 @@ namespace AuthMicroservice.Domain.Interfaces.Repositories
 {
 	public interface IRepository<TEntity> where TEntity : IGuid
 	{
-		IQueryable<TEntity> GetAll();
-		Task<IQueryable<TEntity>> GetAllAsync();
-		TEntity GetDetail(Guid id);
-		Task<TEntity> GetDetailAsync(Guid id);
-		bool Create(TEntity entity);
-		Task<bool> CreateAsync(TEntity entity);
-		bool Update(TEntity entity);
-		Task<bool> UpdateAsync(Guid id, TEntity entity);
-		bool Delete(Guid id);
-		Task<bool> DeleteAsync(Guid id);
-		bool Save();
-		Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate);
-		bool Any(Expression<Func<TEntity, bool>> expression);
-		Task<bool> SaveAsync();
+		Task<IQueryable<TEntity>> GetAll();
+		Task<TEntity> GetDetail(Guid id);
+		Task Create(TEntity entity);
+		Task Update(Guid id, TEntity entity);
+		Task Delete(TEntity entity);
+		Task<bool> Any(Expression<Func<TEntity, bool>> predicate);
+		Task<bool> SaveChanges();
 
 	}
 }

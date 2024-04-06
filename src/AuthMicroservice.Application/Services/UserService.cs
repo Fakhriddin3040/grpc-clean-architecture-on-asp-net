@@ -7,6 +7,7 @@ using AuthMicroservice.Domain.Interfaces.DTOs;
 using AuthMicroservice.Domain.Interfaces.Entities;
 using AuthMicroservice.Domain.Interfaces.Repositories;
 using AuthMicroservice.Domain.Interfaces.Services;
+using AutoMapper;
 using Grpc.Core;
 
 namespace AuthMicroservice.Application.Services
@@ -14,56 +15,62 @@ namespace AuthMicroservice.Application.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _repository;
-        public UserService(IUserRepository repository)
+
+        private readonly IMapper _mapper;
+        public UserService(IUserRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
-        public bool Exists(Expression<Func<IUser, bool>> expression)
+        public async Task<bool> Exists(Expression<Func<User, bool>> expression)
         {
-            return _repository.Any(expression);
+            return await _repository.Any(expression);
         }
 
-        public Guid Authenticate(string username, string password)
+        public async Task<IUserListDTO> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            var user = await _repository.GetDetail(id);
+            return user as IUserListDTO;
         }
 
-        public IUserListDTO Create(IUser user)
+        public User Create(IUserCreateDTO user)
         {
-            IUser newUser = new User
-            {
-                Username = user.Username,
-                Password = user.Password,
-                Role = user.Role,
-            };
+            var newUser = _mapper.Map<User>(user);
+
             _repository.Create(newUser);
-            return newUser as IUserListDTO;
+            return _repository.GetDetail(newUser.Id);
         }
 
-        public IQueryable<IUserListDTO> GetAll()
+        public IQueryable<UserListDTO> GetAll()
         {
-            return _repository.GetAll().Select(u => u as IUserListDTO);
+            return _repository.GetAll().Select(u => u as UserListDTO);
         }
 
-        public IUserDetailDTO GetDetail(Guid id)
+        public UserDetailDTO GetDetail(Guid id)
         {
-            throw new NotImplementedException();
+            throw new NotmplementedException();
         }
 
-        public IUserListDTO Update(IUserUpdateDTO user)
+        public UserListDTO Update(UserUpdateDTO user)
         {
-            throw new NotImplementedException();
+            throw new NotmplementedException();
         }
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            throw new NotmplementedException();
         }
 
-        public bool SaveChanges()
+        public void SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            _repository.SaveChanges();
         }
+
+        public void SaveChanges()
+        {
+            _repository.SaveChanges();
+        }
+
     }
 }

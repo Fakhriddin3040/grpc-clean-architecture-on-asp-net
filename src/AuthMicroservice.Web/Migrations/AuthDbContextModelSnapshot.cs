@@ -23,24 +23,29 @@ namespace AuthMicroservice.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("Age")
+                        .HasMaxLength(80)
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly>("Birthday")
+                    b.Property<DateOnly?>("Birthday")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("datetime('now')");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasDefaultValue(true);
 
                     b.Property<string>("LastName")
-                        .IsRequired()
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
@@ -49,18 +54,22 @@ namespace AuthMicroservice.Web.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Role")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("TEXT");
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValueSql("datetime('now')");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasMaxLength(50)
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Username")
+                        .IsUnique();
 
                     b.ToTable("User");
                 });
@@ -73,11 +82,11 @@ namespace AuthMicroservice.Web.Migrations
                                 .HasColumnType("TEXT");
 
                             b1.Property<string>("Email")
-                                .IsRequired()
+                                .HasMaxLength(38)
                                 .HasColumnType("TEXT");
 
                             b1.Property<string>("Phone")
-                                .IsRequired()
+                                .HasMaxLength(14)
                                 .HasColumnType("TEXT");
 
                             b1.HasKey("UserId");
