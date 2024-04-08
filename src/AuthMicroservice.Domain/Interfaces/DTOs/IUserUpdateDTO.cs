@@ -1,6 +1,8 @@
+using AuthMicroservice.Domain.Interfaces.Fields;
+
 namespace AuthMicroservice.Domain.Interfaces.DTOs
 {
-	public interface IUserUpdateDTO : IBaseUserDTO, IPersonDTO
+	public interface IUserUpdateDTO : IGuid, IBaseUserDTO, IPersonDTO, ISalt
 	{
 	}
 }

@@ -9,10 +9,10 @@ public class Contacts : IContacts
 
 	public Contacts(string email, string phone)
 	{
-		if (!IsValidEmail(email))
-			throw new ArgumentException("Invalid email address");
-		if (!IsValidPhone(phone))
-			throw new ArgumentException("Invalid phone number");
+		// if (!IsValidEmail(email))
+		// 	throw new ArgumentException("Invalid email address");
+		// if (!IsValidPhone(phone))
+		// 	throw new ArgumentException("Invalid phone number");
 
 		Email = email;
 		Phone = phone;

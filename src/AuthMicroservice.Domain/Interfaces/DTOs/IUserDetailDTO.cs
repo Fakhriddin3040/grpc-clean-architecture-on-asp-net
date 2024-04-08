@@ -3,7 +3,8 @@ using AuthMicroservice.Domain.Interfaces.ValueObjects;
 
 namespace AuthMicroservice.Domain.Interfaces.DTOs
 {
-	public interface IUserDetailDTO : IGuid, IBaseUserDTO, IPersonDTO
+	public interface IUserDetailDTO : IBaseUserDTO, IPersonDTO
 	{
+		Guid Id { get; set; }
 	}
 }

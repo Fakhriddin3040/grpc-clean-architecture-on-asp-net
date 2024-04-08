@@ -1,18 +1,15 @@
 using System.Linq;
 using System.Linq.Expressions;
-using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography;
 using AuthMicroservice.Application.DTOs;
 using AuthMicroservice.Domain.Entities;
 using AuthMicroservice.Domain.Interfaces.DTOs;
-using AuthMicroservice.Domain.Interfaces.Entities;
 using AuthMicroservice.Domain.Interfaces.Repositories;
 using AuthMicroservice.Domain.Interfaces.Services;
 using AutoMapper;
+using BCrypt.Net;
 using AutoMapper.QueryableExtensions;
 using Grpc.Core;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
-using Microsoft.CodeAnalysis.Host;
 
 namespace AuthMicroservice.Application.Services
 {
@@ -45,7 +42,25 @@ namespace AuthMicroservice.Application.Services
 
         public async Task<IUserListDTO> GetById(Guid id)
         {
-            var user = await _repository.GetDetail(id);
+            IUser user = await _repository.GetDetail(id);
+            
+            if (user == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "User not found"));
+            }
+
+            return _mapper.Map<UserListDTO>(user);
+        }
+
+        public async Task<IUserListDTO> GetByUsername(string username)
+        {
+            IUser user = await _repository.GetByUsername(username);
+
+            if (user == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "User not found"));
+            }
+
             return _mapper.Map<UserListDTO>(user);
         }
 
@@ -53,10 +68,16 @@ namespace AuthMicroservice.Application.Services
         {
             User newUser = _mapper.Map<User>(userDto);
 
-            await _repository.Create(newUser);
-            IUser createdUser = await _repository.GetDetail(newUser.Id);
+            bool created = await _repository.Create(newUser);
 
-            return _mapper.Map<UserListDTO>(createdUser);
+            if (!created)
+            {
+                throw new RpcException(new Status(StatusCode.Internal, "User creation failed"));
+            }
+
+            IUserListDTO createdUser = await GetById(newUser.Id);
+
+            return createdUser;
         }
 
         public async Task<IUserListDTO> Update(Guid id, IUserUpdateDTO userUpdateDTO)
@@ -105,6 +126,21 @@ namespace AuthMicroservice.Application.Services
         public async Task SaveChanges()
         {
             await _repository.SaveChanges();
+        }
+
+        public string HashPassword(string password, string salt)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(input: password, salt: salt);
+        }
+
+        public string GenerateSalt()
+        {
+            return BCrypt.Net.BCrypt.GenerateSalt();
+        }
+
+        public bool VerifyPassword(string password, string hashedPassword, string salt)
+        {
+            return hashedPassword == HashPassword(password, salt);
         }
     }
 }

@@ -1,9 +1,10 @@
+using AuthMicroservice.Domain.Interfaces.Fields;
+
 namespace AuthMicroservice.Domain.Interfaces.Entities
 {
-	public interface IBaseUser
+	public interface IBaseUser : IPassword
 	{
 		string Username { get; }
-		string Role { get; }
-		bool IsActive { get; }
+		bool? IsActive { get; }
 	}
 }

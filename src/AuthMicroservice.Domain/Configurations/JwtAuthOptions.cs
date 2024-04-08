@@ -1,12 +1,13 @@
 using Microsoft.IdentityModel.Tokens;
 using System.ComponentModel;
+using System.Security.Claims;
 using System.Text;
 
 namespace AuthMicroservice.Domain.Configurations
 {
     public static class JwtAuthOptions
     {
-        public const string KEY = "Very_Secret_Kdsfjfjsfhsjdfhsjdfhskfhsjdkkfhskjdfey";
+        public const string KEY = "kjladfsjksadiofwaioefhiuaiodjsfhiouadsfhoisklfxcvxdfghiosuiuasfhiuwcjnviosfjiopsdifoiosudfjdiosjfiosajfiouahsvoufrbhnviudfbhnviudfbhviudohjnvuedhrfiouv";
 
         public const int LIFETIME = 5000;
         
@@ -14,10 +15,18 @@ namespace AuthMicroservice.Domain.Configurations
 
         public const string AUDIENCE = "AuthMicroservice";
 
+
+        public const string SecurityAlgorithm = SecurityAlgorithms.Sha256;
+
         public static DateTime GetExpireTime() =>
-			DateTime.Now.AddDays(120);
+            DateTime.Now.AddDays(120);
 
         public static SymmetricSecurityKey GetSymmetricSecurityKey() =>
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
+
+        public static List<Claim> GetClaims(Guid userId) => new List<Claim>
+        {
+            new Claim(ClaimsIdentity.DefaultNameClaimType, userId.ToString()),
+        };
     }
 }

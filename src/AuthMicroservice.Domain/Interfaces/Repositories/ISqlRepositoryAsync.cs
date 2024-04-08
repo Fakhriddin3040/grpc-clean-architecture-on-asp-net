@@ -1,5 +1,5 @@
 using System.Linq.Expressions;
-using AuthMicroservice.Domain.Interfaces.Entities;
+using AuthMicroservice.Domain.Interfaces.Fields;
 
 public interface ISqlRepositoryAsync<T> where T : IGuid
 {

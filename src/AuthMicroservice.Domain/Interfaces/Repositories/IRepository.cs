@@ -1,6 +1,5 @@
 using System.Linq.Expressions;
-using AuthMicroservice.Domain.Interfaces.Entities;
-using Microsoft.CodeAnalysis.Operations;
+using AuthMicroservice.Domain.Interfaces.Fields;
 
 namespace AuthMicroservice.Domain.Interfaces.Repositories
 {

@@ -1,20 +1,23 @@
+using AuthMicroservice.Domain.Interfaces;
 using AuthMicroservice.Domain.Interfaces.Entities;
 using AuthMicroservice.Domain.Interfaces.ValueObjects;
 using AuthMicroservice.Domain.ValueObjects;
 
 namespace AuthMicroservice.Domain.Entities;
 
-public class User : IGuid, IUser, IPerson
+public class User : IUser
 {
     public Guid Id { get; set; }
 
     public string Username { get; set; }
 
-    private string Password { get; set; }
+    public string Salt { get; set; }
+
+    public string Password { get; set; }
 
     public string Role { get; set; }
 
-    public bool IsActive { get; set; }
+    public bool? IsActive { get; set; }
 
     public string FirstName { get; set; }
 
@@ -26,7 +29,7 @@ public class User : IGuid, IUser, IPerson
 
     public DateOnly? Birthday { get; set; }
 
-    public DateTime CreatedAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
 
-    public DateTime UpdatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
 }

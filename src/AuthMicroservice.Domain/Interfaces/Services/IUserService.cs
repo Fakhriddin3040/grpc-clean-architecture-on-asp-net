@@ -11,6 +11,8 @@ namespace AuthMicroservice.Domain.Interfaces.Services
 
 		Task<IUserDetailDTO> GetDetail(Guid id);
 
+		Task<IUserListDTO> GetByUsername(string username);
+
 		Task<IUserListDTO> Create(IUserCreateDTO user);
 
 		Task<IUserListDTO> Update(Guid id, IUserUpdateDTO userUpdateDTO);
@@ -20,5 +22,11 @@ namespace AuthMicroservice.Domain.Interfaces.Services
 		Task SaveChanges();
 
 		Task<bool> Exists(Expression<Func<IUser, bool>> expression);
+
+		string HashPassword(string password, string salt);
+
+        public bool VerifyPassword(string password, string hashedPassword, string salt);
+
+		public string GenerateSalt();
 }
 }

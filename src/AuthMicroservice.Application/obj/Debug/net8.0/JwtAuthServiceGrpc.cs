@@ -7,7 +7,7 @@
 
 using grpc = global::Grpc.Core;
 
-namespace AuthMicroservice.Protos {
+namespace AuthMicroservice.ProtoServices {
   public static partial class JwtAuthProtoService
   {
     static readonly string __ServiceName = "authmicroservice.JwtAuthProtoService";
@@ -46,18 +46,18 @@ namespace AuthMicroservice.Protos {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::AuthMicroservice.Protos.RegisterRequest> __Marshaller_authmicroservice_RegisterRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AuthMicroservice.Protos.RegisterRequest.Parser));
+    static readonly grpc::Marshaller<global::AuthMicroservice.ProtoServices.RegisterRequest> __Marshaller_authmicroservice_RegisterRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AuthMicroservice.ProtoServices.RegisterRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::AuthMicroservice.Protos.SuccessJwtLoginResponse> __Marshaller_authmicroservice_SuccessJwtLoginResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AuthMicroservice.Protos.SuccessJwtLoginResponse.Parser));
+    static readonly grpc::Marshaller<global::AuthMicroservice.ProtoServices.SuccessJwtLoginResponse> __Marshaller_authmicroservice_SuccessJwtLoginResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AuthMicroservice.ProtoServices.SuccessJwtLoginResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::AuthMicroservice.Protos.LoginRequest> __Marshaller_authmicroservice_LoginRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AuthMicroservice.Protos.LoginRequest.Parser));
+    static readonly grpc::Marshaller<global::AuthMicroservice.ProtoServices.LoginRequest> __Marshaller_authmicroservice_LoginRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AuthMicroservice.ProtoServices.LoginRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::AuthMicroservice.Protos.ValidateTokenRequest> __Marshaller_authmicroservice_ValidateTokenRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AuthMicroservice.Protos.ValidateTokenRequest.Parser));
+    static readonly grpc::Marshaller<global::AuthMicroservice.ProtoServices.ValidateTokenRequest> __Marshaller_authmicroservice_ValidateTokenRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AuthMicroservice.ProtoServices.ValidateTokenRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::AuthMicroservice.Protos.ValidateTokenResponse> __Marshaller_authmicroservice_ValidateTokenResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AuthMicroservice.Protos.ValidateTokenResponse.Parser));
+    static readonly grpc::Marshaller<global::AuthMicroservice.ProtoServices.ValidateTokenResponse> __Marshaller_authmicroservice_ValidateTokenResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::AuthMicroservice.ProtoServices.ValidateTokenResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::AuthMicroservice.Protos.RegisterRequest, global::AuthMicroservice.Protos.SuccessJwtLoginResponse> __Method_Register = new grpc::Method<global::AuthMicroservice.Protos.RegisterRequest, global::AuthMicroservice.Protos.SuccessJwtLoginResponse>(
+    static readonly grpc::Method<global::AuthMicroservice.ProtoServices.RegisterRequest, global::AuthMicroservice.ProtoServices.SuccessJwtLoginResponse> __Method_Register = new grpc::Method<global::AuthMicroservice.ProtoServices.RegisterRequest, global::AuthMicroservice.ProtoServices.SuccessJwtLoginResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "Register",
@@ -65,7 +65,7 @@ namespace AuthMicroservice.Protos {
         __Marshaller_authmicroservice_SuccessJwtLoginResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::AuthMicroservice.Protos.LoginRequest, global::AuthMicroservice.Protos.SuccessJwtLoginResponse> __Method_Login = new grpc::Method<global::AuthMicroservice.Protos.LoginRequest, global::AuthMicroservice.Protos.SuccessJwtLoginResponse>(
+    static readonly grpc::Method<global::AuthMicroservice.ProtoServices.LoginRequest, global::AuthMicroservice.ProtoServices.SuccessJwtLoginResponse> __Method_Login = new grpc::Method<global::AuthMicroservice.ProtoServices.LoginRequest, global::AuthMicroservice.ProtoServices.SuccessJwtLoginResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "Login",
@@ -73,7 +73,7 @@ namespace AuthMicroservice.Protos {
         __Marshaller_authmicroservice_SuccessJwtLoginResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::AuthMicroservice.Protos.ValidateTokenRequest, global::AuthMicroservice.Protos.ValidateTokenResponse> __Method_IsValidToken = new grpc::Method<global::AuthMicroservice.Protos.ValidateTokenRequest, global::AuthMicroservice.Protos.ValidateTokenResponse>(
+    static readonly grpc::Method<global::AuthMicroservice.ProtoServices.ValidateTokenRequest, global::AuthMicroservice.ProtoServices.ValidateTokenResponse> __Method_IsValidToken = new grpc::Method<global::AuthMicroservice.ProtoServices.ValidateTokenRequest, global::AuthMicroservice.ProtoServices.ValidateTokenResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "IsValidToken",
@@ -83,7 +83,7 @@ namespace AuthMicroservice.Protos {
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::AuthMicroservice.Protos.JwtAuthServiceReflection.Descriptor.Services[0]; }
+      get { return global::AuthMicroservice.ProtoServices.JwtAuthServiceReflection.Descriptor.Services[0]; }
     }
 
     /// <summary>Base class for server-side implementations of JwtAuthProtoService</summary>
@@ -91,19 +91,19 @@ namespace AuthMicroservice.Protos {
     public abstract partial class JwtAuthProtoServiceBase
     {
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::AuthMicroservice.Protos.SuccessJwtLoginResponse> Register(global::AuthMicroservice.Protos.RegisterRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::AuthMicroservice.ProtoServices.SuccessJwtLoginResponse> Register(global::AuthMicroservice.ProtoServices.RegisterRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::AuthMicroservice.Protos.SuccessJwtLoginResponse> Login(global::AuthMicroservice.Protos.LoginRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::AuthMicroservice.ProtoServices.SuccessJwtLoginResponse> Login(global::AuthMicroservice.ProtoServices.LoginRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::AuthMicroservice.Protos.ValidateTokenResponse> IsValidToken(global::AuthMicroservice.Protos.ValidateTokenRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::AuthMicroservice.ProtoServices.ValidateTokenResponse> IsValidToken(global::AuthMicroservice.ProtoServices.ValidateTokenRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -128,9 +128,9 @@ namespace AuthMicroservice.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public static void BindService(grpc::ServiceBinderBase serviceBinder, JwtAuthProtoServiceBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_Register, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::AuthMicroservice.Protos.RegisterRequest, global::AuthMicroservice.Protos.SuccessJwtLoginResponse>(serviceImpl.Register));
-      serviceBinder.AddMethod(__Method_Login, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::AuthMicroservice.Protos.LoginRequest, global::AuthMicroservice.Protos.SuccessJwtLoginResponse>(serviceImpl.Login));
-      serviceBinder.AddMethod(__Method_IsValidToken, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::AuthMicroservice.Protos.ValidateTokenRequest, global::AuthMicroservice.Protos.ValidateTokenResponse>(serviceImpl.IsValidToken));
+      serviceBinder.AddMethod(__Method_Register, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::AuthMicroservice.ProtoServices.RegisterRequest, global::AuthMicroservice.ProtoServices.SuccessJwtLoginResponse>(serviceImpl.Register));
+      serviceBinder.AddMethod(__Method_Login, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::AuthMicroservice.ProtoServices.LoginRequest, global::AuthMicroservice.ProtoServices.SuccessJwtLoginResponse>(serviceImpl.Login));
+      serviceBinder.AddMethod(__Method_IsValidToken, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::AuthMicroservice.ProtoServices.ValidateTokenRequest, global::AuthMicroservice.ProtoServices.ValidateTokenResponse>(serviceImpl.IsValidToken));
     }
 
   }

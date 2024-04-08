@@ -1,7 +1,7 @@
 using AuthMicroservice.Domain.Interfaces.Repositories;
-using AuthMicroservice.Domain.Interfaces.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using AuthMicroservice.Domain.Interfaces.Fields;
 
 namespace AuthMicroservice.Infrastructure.DataAccess.Repositories;
 
@@ -11,7 +11,7 @@ public class SqlRepository<T> : ISqlRepository<T>, ISqlRepositoryAsync<T> where 
 
 	public SqlRepository(DbContext dbContext)
 	{
-		_context = dbContext ?? throw new ArgumentNullException();
+		_context = dbContext;
 	}
 
 	public IQueryable<T> GetAll()

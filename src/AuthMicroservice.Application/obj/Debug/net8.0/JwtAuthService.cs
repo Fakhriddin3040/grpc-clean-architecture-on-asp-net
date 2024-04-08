@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace AuthMicroservice.Protos {
+namespace AuthMicroservice.ProtoServices {
 
   /// <summary>Holder for reflection information generated from jwt_auth_service.proto</summary>
   public static partial class JwtAuthServiceReflection {
@@ -36,16 +36,16 @@ namespace AuthMicroservice.Protos {
             "c2VydmljZS5Mb2dpblJlcXVlc3QaKS5hdXRobWljcm9zZXJ2aWNlLlN1Y2Nl",
             "c3NKd3RMb2dpblJlc3BvbnNlEl8KDElzVmFsaWRUb2tlbhImLmF1dGhtaWNy",
             "b3NlcnZpY2UuVmFsaWRhdGVUb2tlblJlcXVlc3QaJy5hdXRobWljcm9zZXJ2",
-            "aWNlLlZhbGlkYXRlVG9rZW5SZXNwb25zZUIaqgIXQXV0aE1pY3Jvc2Vydmlj",
-            "ZS5Qcm90b3NiBnByb3RvMw=="));
+            "aWNlLlZhbGlkYXRlVG9rZW5SZXNwb25zZUIhqgIeQXV0aE1pY3Jvc2Vydmlj",
+            "ZS5Qcm90b1NlcnZpY2VzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::AuthMicroservice.Protos.RegisterRequest), global::AuthMicroservice.Protos.RegisterRequest.Parser, new[]{ "Username", "Password" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::AuthMicroservice.Protos.LoginRequest), global::AuthMicroservice.Protos.LoginRequest.Parser, new[]{ "Username", "Password" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::AuthMicroservice.Protos.SuccessJwtLoginResponse), global::AuthMicroservice.Protos.SuccessJwtLoginResponse.Parser, new[]{ "Token" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::AuthMicroservice.Protos.ValidateTokenRequest), global::AuthMicroservice.Protos.ValidateTokenRequest.Parser, new[]{ "Token" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::AuthMicroservice.Protos.ValidateTokenResponse), global::AuthMicroservice.Protos.ValidateTokenResponse.Parser, new[]{ "Valid" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::AuthMicroservice.ProtoServices.RegisterRequest), global::AuthMicroservice.ProtoServices.RegisterRequest.Parser, new[]{ "Username", "Password" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::AuthMicroservice.ProtoServices.LoginRequest), global::AuthMicroservice.ProtoServices.LoginRequest.Parser, new[]{ "Username", "Password" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::AuthMicroservice.ProtoServices.SuccessJwtLoginResponse), global::AuthMicroservice.ProtoServices.SuccessJwtLoginResponse.Parser, new[]{ "Token" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::AuthMicroservice.ProtoServices.ValidateTokenRequest), global::AuthMicroservice.ProtoServices.ValidateTokenRequest.Parser, new[]{ "Token" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::AuthMicroservice.ProtoServices.ValidateTokenResponse), global::AuthMicroservice.ProtoServices.ValidateTokenResponse.Parser, new[]{ "Valid" }, null, null, null, null)
           }));
     }
     #endregion
@@ -67,7 +67,7 @@ namespace AuthMicroservice.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AuthMicroservice.Protos.JwtAuthServiceReflection.Descriptor.MessageTypes[0]; }
+      get { return global::AuthMicroservice.ProtoServices.JwtAuthServiceReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -294,7 +294,7 @@ namespace AuthMicroservice.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AuthMicroservice.Protos.JwtAuthServiceReflection.Descriptor.MessageTypes[1]; }
+      get { return global::AuthMicroservice.ProtoServices.JwtAuthServiceReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -521,7 +521,7 @@ namespace AuthMicroservice.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AuthMicroservice.Protos.JwtAuthServiceReflection.Descriptor.MessageTypes[2]; }
+      get { return global::AuthMicroservice.ProtoServices.JwtAuthServiceReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -711,7 +711,7 @@ namespace AuthMicroservice.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AuthMicroservice.Protos.JwtAuthServiceReflection.Descriptor.MessageTypes[3]; }
+      get { return global::AuthMicroservice.ProtoServices.JwtAuthServiceReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -901,7 +901,7 @@ namespace AuthMicroservice.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::AuthMicroservice.Protos.JwtAuthServiceReflection.Descriptor.MessageTypes[4]; }
+      get { return global::AuthMicroservice.ProtoServices.JwtAuthServiceReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

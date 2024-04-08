@@ -3,16 +3,16 @@ syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 
-package models;
+package models_services;
 
 option csharp_namespace = "AuthMicroservice.ProtoServices";
 
 // UserGrpcService provides methods for managing users.
 service UserGrpcService {
-	rpc GetAll(google.protobuf.Empty) returns (stream UserListDTO);
-	rpc GetById(UserLookup) returns (UserDetailDTO);
-	rpc Create(UserCreateDTO) returns (UserListDTO);
-	rpc Update(UserUpdateDTO) returns (UserListDTO);
+	rpc GetAll(google.protobuf.Empty) returns (stream UserListDTOProto);
+	rpc GetById(UserLookup) returns (UserDetailDTOProto);
+	rpc Create(UserCreateDTOProto) returns (UserListDTOProto);
+	rpc Update(UserUpdateDTOProto) returns (UserListDTOProto);
 	rpc Delete(UserLookup) returns (google.protobuf.Empty);
 }
 
@@ -22,11 +22,11 @@ message UserLookup {
 }
 
 // User represents a user in the system.
-message User {
+message UserProto {
 	string id = 1;
 	string username = 2;
 	string hashedPassword = 3;  // Store hashed password instead of plain text
-	int32 roles = 4;
+	roles_proto role = 4;
 	bool isActive = 5;
 	string firstName = 6;
 	string lastName = 7;
@@ -38,8 +38,8 @@ message User {
 	google.protobuf.Timestamp updatedAt = 13;
 }
 
-// UserListDTO represents a user in a list of users.
-message UserListDTO {
+// UserListDTOProto represents a user in a list of users.
+message UserListDTOProto {
 	string id = 1;
 	string firstName = 2;
 	string lastName = 3;
@@ -50,8 +50,8 @@ message UserListDTO {
 	google.protobuf.Timestamp updatedAt = 8;
 }
 
-// UserCreateDTO is used to create a new user.
-message UserCreateDTO {
+// UserCreateDTOProto is used to create a new user.
+message UserCreateDTOProto {
 	string username = 1;
 	string hashedPassword = 2;  // Store hashed password instead of plain text
 	string firstName = 3;
@@ -62,11 +62,10 @@ message UserCreateDTO {
 	google.protobuf.Timestamp birthday = 8;
 }
 
-// UserUpdateDTO is used to update an existing user.
-message UserUpdateDTO {
+// UserUpdateDTOProto is used to update an existing user.
+message UserUpdateDTOProto {
 	string id = 1;
 	string username = 2;
-	int32 roles = 3;
 	string firstName = 4;
 	string lastName = 5;
 	int32 age = 6;
@@ -75,11 +74,11 @@ message UserUpdateDTO {
 	google.protobuf.Timestamp birthday = 9;
 }
 
-// UserDetailDTO represents detailed information about a user.
-message UserDetailDTO {
+// UserDetailDTOProto represents detailed information about a user.
+message UserDetailDTOProto {
 	string id = 1;
 	string username = 2;
-	int32 roles = 3;
+	roles_proto roles = 3;
 	bool isActive = 4;
 	string firstName = 5;
 	string lastName = 6;
@@ -92,7 +91,7 @@ message UserDetailDTO {
 }
 
 // roles represents the different roles a user can have.
-enum roles {
+enum roles_proto {
 	ADMIN = 0;
 	USER = 1;
 }

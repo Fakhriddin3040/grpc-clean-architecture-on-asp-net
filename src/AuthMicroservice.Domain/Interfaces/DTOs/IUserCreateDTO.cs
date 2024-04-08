@@ -1,9 +1,9 @@
-using System.ComponentModel;
-using AuthMicroservice.Domain.Interfaces.Entities;
+using AuthMicroservice.Domain.Interfaces.Fields;
 
 namespace AuthMicroservice.Domain.Interfaces.DTOs
 {
-	public interface IUserCreateDTO : IBaseUserDTO, IPersonDTO
+	public interface IUserCreateDTO : IGuid, IBaseUserDTO, IPersonDTO, ISalt
 	{
+		string Password { get; set; }
 	}
 }

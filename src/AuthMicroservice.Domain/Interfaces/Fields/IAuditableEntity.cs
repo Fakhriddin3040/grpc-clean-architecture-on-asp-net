@@ -1,6 +1,6 @@
 using AuthMicroservice.Domain.Interfaces.Entities;
 
-namespace AuthMicroservice.Domain.Interfaces.Entities
+namespace AuthMicroservice.Domain.Interfaces.Fields
 {
 	public interface IAuditableEntity
 	{

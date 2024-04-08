@@ -11,6 +11,17 @@ public class AuthEntitiesConfiguration : IEntityTypeConfiguration<User>
 	{
 		builder.HasKey(e => e.Id);
 
+		builder.Property(e => e.Username)
+			.HasMaxLength(20)
+			.IsRequired();
+
+		builder.HasIndex(e => e.Username)
+			.IsUnique();
+
+		builder.Property(e => e.Password)
+			.HasMaxLength(100)
+			.IsRequired();
+
 		builder.OwnsOne(e => e.Contacts, contacts =>
 		{
 			contacts.Property(e => e.Email)
@@ -39,23 +50,14 @@ public class AuthEntitiesConfiguration : IEntityTypeConfiguration<User>
 
 		builder.Property(e => e.CreatedAt)
 			.ValueGeneratedOnAdd()
-			.HasDefaultValueSql("datetime('now')");
+			.HasDefaultValueSql("datetime('now')")
+			.IsRequired(false);
 
 		builder.Property(e => e.UpdatedAt)
 			.ValueGeneratedOnUpdate()
-			.HasDefaultValueSql("datetime('now')");
-
-		builder.HasIndex(e => e.Username)
-			.IsUnique();
-
-		builder.Property(e => e.Username)
-			.HasMaxLength(20)
-			.IsRequired();
-
-		builder.Property(e => e.Password)
-			.HasMaxLength(100)
-			.IsRequired();
-
+			.HasDefaultValueSql("datetime('now')")
+			.IsRequired(false);
+			
 		builder.Property(e => e.Role)
 			.IsRequired(false);
 

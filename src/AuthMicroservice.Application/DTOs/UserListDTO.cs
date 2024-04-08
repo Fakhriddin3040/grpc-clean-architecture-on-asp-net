@@ -5,11 +5,15 @@ namespace AuthMicroservice.Application.DTOs
 {
     public class UserListDTO : IUserListDTO
     {
-        public Guid Id { get; }
+        public Guid Id { get; set; }
 
         public string Username { get; set; }
 
         public string FirstName { get; set; }
+
+        public string Password { get; set; }
+
+        public string Salt { get; set; }
 
         public string LastName { get; set; }
 
@@ -17,8 +21,8 @@ namespace AuthMicroservice.Application.DTOs
 
         public string Phone { get; set; }
 
-        public DateTime CreatedAt { get; }
+        public DateTime? CreatedAt { get; }
 
-        public DateTime UpdatedAt { get; }
+        public DateTime? UpdatedAt { get; }
     }
 }

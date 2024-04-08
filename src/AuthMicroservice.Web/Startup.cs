@@ -1,5 +1,6 @@
 using System.Text;
 using AuthMicroservice.Application;
+using AuthMicroservice.Application.Common.Mapping;
 using AuthMicroservice.Application.Services;
 using AuthMicroservice.Domain.Configurations;
 using AuthMicroservice.Domain.Interfaces;
@@ -7,6 +8,8 @@ using AuthMicroservice.Domain.Interfaces.Repositories;
 using AuthMicroservice.Domain.Interfaces.Services;
 using AuthMicroservice.Infrastructure.DataAccess;
 using AuthMicroservice.Infrastructure.DataAccess.Repositories;
+using AuthMicroservice.Infrastructure.DependencyInjection;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -24,20 +27,11 @@ namespace AuthMicroservice.Web
 
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddDbContext<AuthDbContext>(options =>
-				{
-					options.UseSqlite(_configuration.GetConnectionString("DefaultConnection"), b =>
-					{
-						b.MigrationsAssembly("AuthMicroservice.Web");
-					});
-				});
 			services.AddGrpc();
 			services.AddGrpcReflection();
-
-
-			services.AddScoped<IUserRepository, UserRepository>();
+			services.AddAutoMapper(typeof(MappingProfile));
 			services.AddScoped<IUserService, UserService>();
-			services.AddScoped<AuthDbContext>();
+			services.AddInfrastructure(_configuration);
 
 			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 				.AddJwtBearer(options =>
@@ -65,7 +59,7 @@ namespace AuthMicroservice.Web
 
 			app.UseEndpoints(endpoints =>
 			{
-				endpoints.MapGrpcService<JwtAuthService>();
+				endpoints.MapGrpcService<JwTokenAuthenticationGrpcService>();
 				endpoints.MapGrpcReflectionService();
 			});
 		}
