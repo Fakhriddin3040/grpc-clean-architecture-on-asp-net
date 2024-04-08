@@ -9,70 +9,74 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace AuthMicroservice.Application.Common.Mapping
 {
-	public class MappingProfile : Profile
-	{
-		public MappingProfile()
-		{
-		}
+    public class MappingProfile : Profile
+    {
+        public MappingProfile()
+        {
+            ApplyCreatedMappings();
+        }
 
-		private void ApplyCreatedMappings()
-		{
-			CreateMap<User, UserListDTO>()
-				.ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
-				.ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
+        private void ApplyCreatedMappings()
+        {
+            CreateMap<User, UserListDTO>()
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
 
-			CreateMap<User, UserCreateDTO>()
-				.ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
-				.ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
+            CreateMap<User, UserCreateDTO>()
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
 
-			CreateMap<User, UserUpdateDTO>()
-				.ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
-				.ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
+            CreateMap<User, UserUpdateDTO>()
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
 
-			CreateMap<UserCreateDTO, User>()
-				.ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
+            CreateMap<UserCreateDTO, User>()
+                .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
 
-			CreateMap<UserUpdateDTO, User>()
-				.ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
-		}
+            CreateMap<UserUpdateDTO, User>()
+                .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
 
-		private void ApplyMappingsFromAssembly(Assembly assembly)
-		{
-			var mapFromTypes = typeof(IMapFrom<>);
+            CreateMap<UserListDTO, User>()
+                .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
+        }
 
-			var mappingMethodName = nameof(IMapFrom<object>.Mapping);
+        private void ApplyMappingsFromAssembly(Assembly assembly)
+        {
+            var mapFromTypes = typeof(IMapFrom<>);
 
-			bool HasInterface(Type t) => t.IsGenericType && t.GetGenericTypeDefinition() == mapFromTypes;
+            var mappingMethodName = nameof(IMapFrom<object>.Mapping);
 
-			var types = assembly.GetExportedTypes().Where(t => t.GetInterfaces().Any(HasInterface)).ToList();
+            bool HasInterface(Type t) => t.IsGenericType && t.GetGenericTypeDefinition() == mapFromTypes;
 
-			var argumentTypes = new Type[] {typeof(Profile)};
+            var types = assembly.GetExportedTypes().Where(t => t.GetInterfaces().Any(HasInterface)).ToList();
 
-			foreach (var type in types)
-			{
-				var instance = Activator.CreateInstance(type);
+            var argumentTypes = new Type[] {typeof(Profile)};
 
-				var methodInfo = type.GetMethod(mappingMethodName, argumentTypes);
+            foreach (var type in types)
+            {
+                var instance = Activator.CreateInstance(type);
 
-				if (methodInfo != null)
-				{
-					methodInfo.Invoke(instance, new object[] {this});
-				}
-				else
-				{
-					var interfaces = type.GetInterfaces().Where(HasInterface).ToList();
+                var methodInfo = type.GetMethod(mappingMethodName, argumentTypes);
 
-					if (interfaces.Count > 0)
-					{
-						foreach (var @interface in interfaces)
-						{
-							var interfaceMethodInfo = @interface.GetMethod(mappingMethodName, argumentTypes);
+                if (methodInfo != null)
+                {
+                    methodInfo.Invoke(instance, new object[] {this});
+                }
+                else
+                {
+                    var interfaces = type.GetInterfaces().Where(HasInterface).ToList();
 
-							interfaceMethodInfo?.Invoke(instance, new object[] {this});
-						}
-					}
-				}
-			}
-		}
-	}
+                    if (interfaces.Count > 0)
+                    {
+                        foreach (var @interface in interfaces)
+                        {
+                            var interfaceMethodInfo = @interface.GetMethod(mappingMethodName, argumentTypes);
+
+                            interfaceMethodInfo?.Invoke(instance, new object[] {this});
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

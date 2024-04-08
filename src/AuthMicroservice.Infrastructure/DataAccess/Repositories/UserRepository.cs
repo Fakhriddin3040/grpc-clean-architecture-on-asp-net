@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using AuthMicroservice.Domain.Entities;
 using AuthMicroservice.Domain.Interfaces.Repositories;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuthMicroservice.Infrastructure.DataAccess.Repositories
@@ -14,35 +15,41 @@ namespace AuthMicroservice.Infrastructure.DataAccess.Repositories
             _context = authDbContext;
         }
         
-        public async Task<IQueryable<User>> GetAll()
+        public IQueryable<IUser> GetAll()
         {
-            return await Task.FromResult(_context.Users.AsQueryable());
+            return _context.Users.AsQueryable();
         }
 
-        public async Task<User> GetDetail(Guid id)
+        public async Task<IUser> GetDetail(Guid id)
         {
             return await _context.Users.SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<User> GetByUsername(string username)
+        public async Task<IUser> GetByUsername(string username)
         {
             return await _context.Users.SingleOrDefaultAsync(x => x.Username == username);
         }
 
-        public async Task Create(User entity)
+        public async Task<bool> Create(IUser entity)
         {
-            await _context.Users.AddAsync(entity);
+            await _context.Users.AddAsync((User)entity);
+            return await SaveChanges();
         }
         
-        public async Task Update(Guid id, User entity)
+        public async Task<bool> Update(Guid id, IUser entity)
         {
-        var user = await GetDetail(id);
-        _context.Users.Update(user);
+            var user = await GetDetail(id);
+
+            _context.Entry(user).CurrentValues.SetValues(entity);
+
+            return await SaveChanges();
         }
 
-        public async Task Delete(User entity)
+        public async Task<bool> Delete(IUser entity)
         {
-            _context.Users.Remove(entity);
+            _context.Users.Remove((User)entity);
+
+            return await SaveChanges();
         }
 
         public async Task<bool> SaveChanges()
@@ -50,7 +57,7 @@ namespace AuthMicroservice.Infrastructure.DataAccess.Repositories
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> Any(Expression<Func<User, bool>> expression)
+        public async Task<bool> Any(Expression<Func<IUser, bool>> expression)
         {
             return await _context.Users.AnyAsync(expression);
         }

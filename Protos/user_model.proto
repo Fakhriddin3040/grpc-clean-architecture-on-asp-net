@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+package models;
+
+option csharp_namespace = "AuthMicroservice.ProtoServices";
+
+// UserGrpcService provides methods for managing users.
+service UserGrpcService {
+	rpc GetAll(google.protobuf.Empty) returns (stream UserListDTO);
+	rpc GetById(UserLookup) returns (UserDetailDTO);
+	rpc Create(UserCreateDTO) returns (UserListDTO);
+	rpc Update(UserUpdateDTO) returns (UserListDTO);
+	rpc Delete(UserLookup) returns (google.protobuf.Empty);
+}
+
+// UserLookup is used to look up a user by their ID.
+message UserLookup {
+	string id = 1;
+}
+
+// User represents a user in the system.
+message User {
+	string id = 1;
+	string username = 2;
+	string hashedPassword = 3;  // Store hashed password instead of plain text
+	int32 roles = 4;
+	bool isActive = 5;
+	string firstName = 6;
+	string lastName = 7;
+	int32 age = 8;
+	string email = 9;
+	string phone = 10;	
+	google.protobuf.Timestamp birthday = 11;
+	google.protobuf.Timestamp createdAt = 12;
+	google.protobuf.Timestamp updatedAt = 13;
+}
+
+// UserListDTO represents a user in a list of users.
+message UserListDTO {
+	string id = 1;
+	string firstName = 2;
+	string lastName = 3;
+	string username = 4;
+	string email = 5;
+	string phone = 6;	
+	google.protobuf.Timestamp createdAt = 7;
+	google.protobuf.Timestamp updatedAt = 8;
+}
+
+// UserCreateDTO is used to create a new user.
+message UserCreateDTO {
+	string username = 1;
+	string hashedPassword = 2;  // Store hashed password instead of plain text
+	string firstName = 3;
+	string lastName = 4;
+	int32 age = 5;
+	string email = 6;
+	string phone = 7;	
+	google.protobuf.Timestamp birthday = 8;
+}
+
+// UserUpdateDTO is used to update an existing user.
+message UserUpdateDTO {
+	string id = 1;
+	string username = 2;
+	int32 roles = 3;
+	string firstName = 4;
+	string lastName = 5;
+	int32 age = 6;
+	string email = 7;
+	string phone = 8;	
+	google.protobuf.Timestamp birthday = 9;
+}
+
+// UserDetailDTO represents detailed information about a user.
+message UserDetailDTO {
+	string id = 1;
+	string username = 2;
+	int32 roles = 3;
+	bool isActive = 4;
+	string firstName = 5;
+	string lastName = 6;
+	int32 age = 7;
+	string email = 8;
+	string phone = 9;
+	google.protobuf.Timestamp birthday = 10;
+	google.protobuf.Timestamp createdAt = 11;
+	google.protobuf.Timestamp updatedAt = 12;
+}
+
+// roles represents the different roles a user can have.
+enum roles {
+	ADMIN = 0;
+	USER = 1;
+}
+
+// Error represents an error returned by a service method.
+message Error {
+	int32 code = 1;
+	string message = 2;
+	string details = 3;
+}

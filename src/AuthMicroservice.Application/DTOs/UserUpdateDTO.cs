@@ -4,9 +4,9 @@ namespace AuthMicroservice.Application.DTOs
 {
     public class UserUpdateDTO : IUserUpdateDTO
     {
-        public string Username { get; set; }
+        public Guid id { get; }
 
-        public string Password { get; set; }
+        public string Username { get; set; }
 
         public string Role { get; set; }
 
@@ -20,6 +20,6 @@ namespace AuthMicroservice.Application.DTOs
 
         public string Phone { get; set; }
 
-        public readonly DateOnly Birthday;
+        public DateOnly Birthday { get; set; }
     }
 }

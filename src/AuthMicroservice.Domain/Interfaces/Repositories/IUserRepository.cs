@@ -4,8 +4,8 @@ using AuthMicroservice.Domain.Interfaces.Entities;
 
 namespace AuthMicroservice.Domain.Interfaces.Repositories
 {
-	public interface IUserRepository : IRepository<User>
+	public interface IUserRepository : IRepository<IUser>
 	{
-		Task<User> GetByUsername(string username);
+		Task<IUser> GetByUsername(string username);
 	}
 }

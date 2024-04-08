@@ -8,7 +8,11 @@ using AuthMicroservice.Domain.Interfaces.Entities;
 using AuthMicroservice.Domain.Interfaces.Repositories;
 using AuthMicroservice.Domain.Interfaces.Services;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Grpc.Core;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.CodeAnalysis.Host;
 
 namespace AuthMicroservice.Application.Services
 {
@@ -17,60 +21,90 @@ namespace AuthMicroservice.Application.Services
         private readonly IUserRepository _repository;
 
         private readonly IMapper _mapper;
+
         public UserService(IUserRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
         }
 
-        public async Task<bool> Exists(Expression<Func<User, bool>> expression)
+        public IQueryable<IUserListDTO> GetAll()
         {
-            return await _repository.Any(expression);
+            IQueryable<IUser> users = _repository.GetAll();
+
+            IQueryable<IUserListDTO> usersListDTO = users.ProjectTo<UserListDTO>(_mapper.ConfigurationProvider);
+
+            return usersListDTO;
+        }
+
+        public async Task<IUserDetailDTO> GetDetail(Guid id)
+        {
+            IUser user = await _repository.GetDetail(id);
+            return _mapper.Map<UserDetailDTO>(user);
         }
 
         public async Task<IUserListDTO> GetById(Guid id)
         {
             var user = await _repository.GetDetail(id);
-            return user as IUserListDTO;
+            return _mapper.Map<UserListDTO>(user);
         }
 
-        public User Create(IUserCreateDTO user)
+        public async Task<IUserListDTO> Create(IUserCreateDTO userDto)
         {
-            var newUser = _mapper.Map<User>(user);
+            User newUser = _mapper.Map<User>(userDto);
 
-            _repository.Create(newUser);
-            return _repository.GetDetail(newUser.Id);
+            await _repository.Create(newUser);
+            IUser createdUser = await _repository.GetDetail(newUser.Id);
+
+            return _mapper.Map<UserListDTO>(createdUser);
         }
 
-        public IQueryable<UserListDTO> GetAll()
+        public async Task<IUserListDTO> Update(Guid id, IUserUpdateDTO userUpdateDTO)
         {
-            return _repository.GetAll().Select(u => u as UserListDTO);
+            IUser user = await _repository.GetDetail(id);
+
+            if (user == null)
+            {
+                throw new RpcException(new Status(StatusCode.NotFound, "User not found"));
+            }
+
+            _mapper.Map(userUpdateDTO, user);
+
+            bool updated = await _repository.Update(id, user); 
+
+            if (!updated)
+            {
+                throw new RpcException(new Status(StatusCode.Internal, "User update failed"));
+            }
+
+            return _mapper.Map<IUserListDTO>(user);
         }
 
-        public UserDetailDTO GetDetail(Guid id)
+        public async Task Delete(Guid id)
         {
-            throw new NotmplementedException();
+            IUser user = await _repository.GetDetail(id);
+
+            if (user == null)
+            {
+                //ignore it
+            }
+
+            bool deleted = await _repository.Delete(user);
+
+            if (!deleted)
+            {
+                //ignore it
+            }
         }
 
-        public UserListDTO Update(UserUpdateDTO user)
+        public Task<bool> Exists(Expression<Func<IUser, bool>> expression)
         {
-            throw new NotmplementedException();
+            return _repository.Any(expression);
         }
 
-        public void Delete(Guid id)
+        public async Task SaveChanges()
         {
-            throw new NotmplementedException();
+            await _repository.SaveChanges();
         }
-
-        public void SaveChangesAsync()
-        {
-            _repository.SaveChanges();
-        }
-
-        public void SaveChanges()
-        {
-            _repository.SaveChanges();
-        }
-
     }
 }
