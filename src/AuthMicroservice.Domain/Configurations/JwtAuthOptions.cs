@@ -16,7 +16,7 @@ namespace AuthMicroservice.Domain.Configurations
         public const string AUDIENCE = "AuthMicroservice";
 
 
-        public const string SecurityAlgorithm = SecurityAlgorithms.Sha256;
+        public const string SecurityAlgorithm = SecurityAlgorithms.HmacSha256;
 
         public static DateTime GetExpireTime() =>
             DateTime.Now.AddDays(120);

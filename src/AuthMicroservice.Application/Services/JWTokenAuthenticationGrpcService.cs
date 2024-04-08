@@ -62,11 +62,13 @@ public class JwTokenAuthenticationGrpcService: JwtAuthGrpcService.JwtAuthGrpcSer
             Age = 5
         };
 
-        IUserListDTO _ = await _userService.Create(userCreateDTO);
+        IUserListDTO createdUser = await _userService.Create(userCreateDTO);
+
+        string token = GetAccessToken(createdUser.Id);
 
         return await Task.FromResult(
             new LoginResponse {
-                Token = "Token"
+                Token = token
             }
         );
     }
@@ -100,9 +102,6 @@ public class JwTokenAuthenticationGrpcService: JwtAuthGrpcService.JwtAuthGrpcSer
         ValidateRequest request,
         ServerCallContext context)
         {
-            return Task.FromResult(new ValidateResponse
-            {
-                Valid = true,
-            });
+            return Task.FromResult(new ValidateResponse { Valid = true });
         }
 }
