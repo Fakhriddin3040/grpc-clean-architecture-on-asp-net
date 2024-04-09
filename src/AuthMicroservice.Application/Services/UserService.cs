@@ -7,7 +7,6 @@ using AuthMicroservice.Domain.Interfaces.DTOs;
 using AuthMicroservice.Domain.Interfaces.Repositories;
 using AuthMicroservice.Domain.Interfaces.Services;
 using AutoMapper;
-using BCrypt.Net;
 using AutoMapper.QueryableExtensions;
 using Grpc.Core;
 
@@ -126,21 +125,6 @@ namespace AuthMicroservice.Application.Services
         public async Task SaveChanges()
         {
             await _repository.SaveChanges();
-        }
-
-        public string HashPassword(string password, string salt)
-        {
-            return BCrypt.Net.BCrypt.HashPassword(input: password, salt: salt);
-        }
-
-        public string GenerateSalt()
-        {
-            return BCrypt.Net.BCrypt.GenerateSalt();
-        }
-
-        public bool VerifyPassword(string password, string hashedPassword, string salt)
-        {
-            return hashedPassword == HashPassword(password, salt);
         }
     }
 }

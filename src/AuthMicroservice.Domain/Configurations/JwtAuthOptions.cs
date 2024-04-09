@@ -23,10 +23,13 @@ namespace AuthMicroservice.Domain.Configurations
 
         public static SymmetricSecurityKey GetSymmetricSecurityKey() =>
             new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
+            
+        public const int SaltWorkFactor = 10;
 
         public static List<Claim> GetClaims(Guid userId) => new List<Claim>
         {
             new Claim(ClaimsIdentity.DefaultNameClaimType, userId.ToString()),
         };
+
     }
 }

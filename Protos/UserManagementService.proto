@@ -26,16 +26,17 @@ message UserProto {
 	string id = 1;
 	string username = 2;
 	string hashedPassword = 3;  // Store hashed password instead of plain text
-	roles_proto role = 4;
-	bool isActive = 5;
-	string firstName = 6;
-	string lastName = 7;
-	int32 age = 8;
-	string email = 9;
-	string phone = 10;	
-	google.protobuf.Timestamp birthday = 11;
-	google.protobuf.Timestamp createdAt = 12;
-	google.protobuf.Timestamp updatedAt = 13;
+	string salt = 4;  // Store salt used to hash the password
+	roles_proto role = 5;
+	bool isActive = 6;
+	string firstName = 7;
+	string lastName = 8;
+	int32 age = 9;
+	string email = 10;
+	string phone = 11;	
+	google.protobuf.Timestamp birthday = 12;
+	google.protobuf.Timestamp createdAt = 13;
+	google.protobuf.Timestamp updatedAt = 14;
 }
 
 // UserListDTOProto represents a user in a list of users.
@@ -46,14 +47,15 @@ message UserListDTOProto {
 	string username = 4;
 	string email = 5;
 	string phone = 6;	
-	google.protobuf.Timestamp createdAt = 7;
-	google.protobuf.Timestamp updatedAt = 8;
+	string salt = 7;
+	google.protobuf.Timestamp createdAt = 8;
+	google.protobuf.Timestamp updatedAt = 9;
 }
 
 // UserCreateDTOProto is used to create a new user.
 message UserCreateDTOProto {
 	string username = 1;
-	string hashedPassword = 2;  // Store hashed password instead of plain text
+	string password = 2;  
 	string firstName = 3;
 	string lastName = 4;
 	int32 age = 5;
