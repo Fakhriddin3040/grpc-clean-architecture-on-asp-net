@@ -3,20 +3,20 @@ using AuthMicroservice.Domain.Interfaces.Fields;
 
 namespace AuthMicroservice.Domain.Interfaces.Repositories
 {
-	public interface IRepository<TEntity> where TEntity : IGuid
-	{
-		IQueryable<TEntity> GetAll();
+    public interface IRepository<TEntity> where TEntity : IGuid
+    {
+        IQueryable<TEntity> GetAll();
 
-		Task<TEntity> GetDetail(Guid id);
+        Task<TEntity> GetDetail(Guid id);
 
-		Task<bool> Create(TEntity entity);
+        Task<bool> Create(TEntity entity);
 
-		Task<bool> Update(Guid id, TEntity entity);
+        Task<bool> Update(Guid id, TEntity entity);
 
-		Task<bool> Delete(TEntity entity);
+        Task<bool> Delete(TEntity entity);
 
-		Task<bool> Any(Expression<Func<TEntity, bool>> predicate);
+        Task<bool> Any(Expression<Func<TEntity, bool>> predicate);
 
-		Task<bool> SaveChanges();
+        Task<bool> SaveChanges();
 }
-	}
+    }

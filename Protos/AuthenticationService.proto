@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package services.authentication;
+
+service AuthenticationService {
+
+    rpc Register(AuthRequest) returns (AuthResponse);
+    rpc Login(AuthRequest) returns (AuthResponse);
+    rpc IsValidToken(ValidateRequest) returns (ValidateResponse);
+}
+
+message AuthRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message AuthResponse {
+    string token = 1;
+}
+
+message ValidateRequest {
+    string token = 1;
+}
+
+message ValidateResponse {
+    bool is_valid = 1;
+}

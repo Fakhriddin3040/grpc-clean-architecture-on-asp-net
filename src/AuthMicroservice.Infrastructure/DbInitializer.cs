@@ -6,8 +6,8 @@ namespace AuthMicroservice.Infrastructure;
 
 public class DbInitializer
 {
-	public static void Initialize(IAuthDbContext context)
-	{
-		var users = context.Users;
-	}
+    public static void Initialize(IAuthDbContext context)
+    {
+        var users = context.Users;
+    }
 }

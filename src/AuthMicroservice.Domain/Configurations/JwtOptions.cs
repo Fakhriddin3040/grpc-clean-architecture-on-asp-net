@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System.ComponentModel;
 using System.Security.Claims;
@@ -5,7 +6,7 @@ using System.Text;
 
 namespace AuthMicroservice.Domain.Configurations
 {
-    public static class JwtAuthOptions
+    public static class JwtOptions
     {
         public const string KEY = "kjladfsjksadiofwaioefhiuaiodjsfhiouadsfhoisklfxcvxdfghiosuiuasfhiuwcjnviosfjiopsdifoiosudfjdiosjfiosajfiouahsvoufrbhnviudfbhnviudfbhviudohjnvuedhrfiouv";
 
@@ -31,5 +32,10 @@ namespace AuthMicroservice.Domain.Configurations
             new Claim(ClaimsIdentity.DefaultNameClaimType, userId.ToString()),
         };
 
+        public static SigningCredentials GetSigningCredentials() =>
+            new SigningCredentials(
+                GetSymmetricSecurityKey(),
+                SecurityAlgorithm
+            );
     }
 }

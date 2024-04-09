@@ -3,7 +3,7 @@ using AuthMicroservice.Domain.Interfaces.Fields;
 
 namespace AuthMicroservice.Domain.Entities
 {
-	public interface IUser : IGuid, IBaseUser, IPerson, ISalt
-	{
-	}
+    public interface IUser : IGuid, IBaseUser, IPerson, ISalt
+    {
+    }
 }

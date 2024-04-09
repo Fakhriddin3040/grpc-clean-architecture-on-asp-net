@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace AuthMicroservice.Infrastructure.DataAccess.Repositories
 {
-	public class UserRepository : IUserRepository
-	{
+    public class UserRepository : IUserRepository
+    {
         private readonly AuthDbContext _context;
 
         public UserRepository(AuthDbContext authDbContext)
