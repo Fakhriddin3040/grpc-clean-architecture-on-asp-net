@@ -26,6 +26,7 @@ namespace AuthMicroservice.Web
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseApplication(env);
         }
     }
 }

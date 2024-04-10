@@ -2,6 +2,7 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
 
 package managers;
 
@@ -25,15 +26,15 @@ message UserLookup {
 message UserProto {
     string id = 1;
     string username = 2;
-    string hashedPassword = 3;  // Store hashed password instead of plain text
-    string salt = 4;  // Store salt used to hash the password
+    string password = 3;  // Store hashed password instead of plain text
+    google.protobuf.StringValue salt = 4;  // Store salt used to hash the password
     roles_proto role = 5;
     bool isActive = 6;
-    string firstName = 7;
-    string lastName = 8;
+    google.protobuf.StringValue firstName = 7;
+    google.protobuf.StringValue lastName = 8;
     int32 age = 9;
-    string email = 10;
-    string phone = 11;    
+    google.protobuf.StringValue email = 10;
+    google.protobuf.StringValue phone = 11;    
     google.protobuf.Timestamp birthday = 12;
     google.protobuf.Timestamp createdAt = 13;
     google.protobuf.Timestamp updatedAt = 14;
@@ -42,12 +43,12 @@ message UserProto {
 // UserListDTOProto represents a user in a list of users.
 message UserListDTOProto {
     string id = 1;
-    string firstName = 2;
-    string lastName = 3;
+    google.protobuf.StringValue firstName = 2;
+    google.protobuf.StringValue lastName = 3;
     string username = 4;
-    string email = 5;
-    string phone = 6;    
-    string salt = 7;
+    google.protobuf.StringValue email = 5;
+    google.protobuf.StringValue phone = 6;
+    google.protobuf.StringValue salt = 7;
     google.protobuf.Timestamp createdAt = 8;
     google.protobuf.Timestamp updatedAt = 9;
 }
@@ -56,11 +57,11 @@ message UserListDTOProto {
 message UserCreateDTOProto {
     string username = 1;
     string password = 2; 
-    string firstName = 3;
-    string lastName = 4;
+    google.protobuf.StringValue firstName = 3;
+    google.protobuf.StringValue lastName = 4;
     int32 age = 5;
-    string email = 6;
-    string phone = 7;
+    google.protobuf.StringValue email = 6;
+    google.protobuf.StringValue phone = 7;
     google.protobuf.Timestamp birthday = 8;
 }
 
@@ -68,11 +69,11 @@ message UserCreateDTOProto {
 message UserUpdateDTOProto {
     string id = 1;
     string username = 2;
-    string firstName = 4;
-    string lastName = 5;
+    google.protobuf.StringValue firstName = 4;
+    google.protobuf.StringValue lastName = 5;
     int32 age = 6;
-    string email = 7;
-    string phone = 8;    
+    google.protobuf.StringValue email = 7;
+    google.protobuf.StringValue phone = 8;    
     google.protobuf.Timestamp birthday = 9;
 }
 
@@ -82,11 +83,11 @@ message UserDetailDTOProto {
     string username = 2;
     roles_proto roles = 3;
     bool isActive = 4;
-    string firstName = 5;
-    string lastName = 6;
+    google.protobuf.StringValue firstName = 5;
+    google.protobuf.StringValue lastName = 6;
     int32 age = 7;
-    string email = 8;
-    string phone = 9;
+    google.protobuf.StringValue email = 8;
+    google.protobuf.StringValue phone = 9;
     google.protobuf.Timestamp birthday = 10;
     google.protobuf.Timestamp createdAt = 11;
     google.protobuf.Timestamp updatedAt = 12;
@@ -101,6 +102,6 @@ enum roles_proto {
 // Error represents an error returned by a service method.
 message Error {
     int32 code = 1;
-    string message = 2;
-    string details = 3;
+    google.protobuf.StringValue message = 2;
+    google.protobuf.StringValue details = 3;
 }

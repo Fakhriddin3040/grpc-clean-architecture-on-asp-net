@@ -1,11 +1,9 @@
 using System.Reflection;
-using System.Runtime;
 using AuthMicroservice.Application.DTOs;
 using AuthMicroservice.Domain.Entities;
 using AuthMicroservice.Domain.ValueObjects;
+using AuthMicroservice.ProtoServices;
 using AutoMapper;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.IdentityModel.Tokens;
 
 namespace AuthMicroservice.Application.Common.Mapping
 {
@@ -13,12 +11,17 @@ namespace AuthMicroservice.Application.Common.Mapping
     {
         public MappingProfile()
         {
-            ApplyCreatedMappings();
+            ApplyUsersDTOsMapping();
+            ApplyUsersGrpcDTOsMapping();
         }
 
-        private void ApplyCreatedMappings()
+        private void ApplyUsersDTOsMapping()
         {
             CreateMap<User, UserListDTO>()
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
+
+            CreateMap<User, UserDetailDTO>()
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
                 .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
 
@@ -38,6 +41,56 @@ namespace AuthMicroservice.Application.Common.Mapping
 
             CreateMap<UserListDTO, User>()
                 .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
+
+            CreateMap<UserDetailDTO, User>()
+                .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
+        }
+
+        private void ApplyUsersGrpcDTOsMapping()
+        {
+            var config = new MapperConfiguration(cfg => 
+            {
+                cfg.AllowNullDestinationValues = true;
+                cfg.AllowNullCollections = true;
+            });
+            CreateMap<User, UserProto>()
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
+
+            CreateMap<UserProto, User>()
+                .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
+
+            CreateMap<UserListDTO, UserListDTOProto>();
+
+            CreateMap<UserDetailDTO, UserDetailDTOProto>();
+
+            CreateMap<UserCreateDTO, UserCreateDTOProto>();
+
+            CreateMap<UserUpdateDTO, UserUpdateDTOProto>();
+
+            CreateMap<UserListDTOProto, UserListDTO>();
+
+            CreateMap<UserDetailDTOProto, UserDetailDTO>();
+
+            CreateMap<UserUpdateDTOProto, UserUpdateDTO>();
+
+            CreateMap<UserCreateDTOProto, UserCreateDTO>();
+
+            // CreateMap<User, UserUpdateDTOProto>()
+            //     .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
+            //     .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
+
+            // CreateMap<UserProto, User>()
+            //     .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
+                
+            // CreateMap<UserCreateDTOProto, User>()
+            //     .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
+
+            // CreateMap<UserUpdateDTOProto, User>()
+            //     .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
+
+            // CreateMap<UserListDTOProto, User>()
+            //     .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
         }
 
         private void ApplyMappingsFromAssembly(Assembly assembly)

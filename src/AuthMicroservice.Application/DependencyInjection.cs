@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Services.Authentication;
 
 namespace AuthMicroservice.Application.Configurations
 {
@@ -50,7 +51,8 @@ namespace AuthMicroservice.Application.Configurations
         {
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<JwTokenAuthenticationGrpcService>();
+                endpoints.MapGrpcService<JwtAuthGrpcService>();
+                endpoints.MapGrpcService<UserGrpcManager>();
 
                 endpoints.MapGrpcReflectionService();
             });

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AuthMicroservice.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+271b9ee0b8604895fd6927f56dbb75291cd758e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a9c759259c0506f186fffd62165696a0717053f7")]
 [assembly: System.Reflection.AssemblyProductAttribute("AuthMicroservice.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AuthMicroservice.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

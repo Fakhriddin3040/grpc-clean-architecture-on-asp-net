@@ -4,6 +4,7 @@ using AuthMicroservice.Application.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using AuthMicroservice.Domain.Interfaces.DTOs;
 using AuthMicroservice.Domain.Interfaces.Services;
+using Services.Authentication;
 
 namespace AuthMicroservice.Application;
 
@@ -29,7 +30,7 @@ public class JwtAuthGrpcService : AuthenticationService.AuthenticationServiceBas
 
     public override async Task<AuthResponse> Login(AuthRequest request, ServerCallContext context)
     {
-        IUserListDTO user = await _userService.GetByUsername(request.Username);
+        IUserCreateDTO user = _mapper.Map<IUserCreateDTO>(await _userService.GetByUsername(request.Username));
 
         if (user == null)
         {

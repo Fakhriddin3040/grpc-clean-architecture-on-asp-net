@@ -12,8 +12,6 @@ namespace AuthMicroservice.Domain.Interfaces.DTOs
 
         string Salt { get; set; }
 
-        string Password { get; set; }
-
         string LastName { get; set; }
 
         string Email { get; set; }
