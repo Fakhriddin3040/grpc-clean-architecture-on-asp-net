@@ -1,4 +1,3 @@
-using AuthMicroservice.Application.Configurations;
 using AuthMicroservice.Infrastructure.DependencyInjection;
 
 namespace AuthMicroservice.Web
@@ -14,7 +13,6 @@ namespace AuthMicroservice.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddApplication();
             services.AddInfrastructure(_configuration);
 
             services.AddJwtAuthentication();
@@ -26,7 +24,7 @@ namespace AuthMicroservice.Web
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseApplication(env);
+            app.UseInfrastructure(env);
         }
     }
 }

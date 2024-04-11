@@ -2,7 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using AuthMicroservice.Domain.Configurations;
 using AuthMicroservice.Domain.Interfaces.Services;
 
-namespace AuthMicroservice.Application.Services
+namespace AuthMicroservice.Infrastructure.Services
 {
     public class JwtService : IJwtService
     {

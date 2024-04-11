@@ -1,20 +1,19 @@
-using AuthMicroservice.Application.DTOs;
 using AuthMicroservice.Domain.Interfaces.DTOs;
 using AuthMicroservice.Domain.Interfaces.Services;
 using AuthMicroservice.ProtoServices;
 using AutoMapper;
 using Google.Protobuf.WellKnownTypes;
-using Grpc.AspNetCore.Server;
 using Grpc.Core;
-using Microsoft.CodeAnalysis.CSharp;
 
-namespace AuthMicroservice.Application.Services
+namespace AuthMicroservice.Infrastructure.Controllers
 {
-    public class UserGrpcManager : ProtoServices.UserGrpcManager.UserGrpcManagerBase
+    public class UserController : UserGrpcManager.UserGrpcManagerBase
     {
         private readonly IUserService _userService;
+
         private readonly IMapper _mapper;
-        public UserGrpcManager(IUserService userService, IMapper mapper)
+
+        public UserController(IUserService userService, IMapper mapper)
         {
             _userService = userService;
             _mapper = mapper;
@@ -43,5 +42,13 @@ namespace AuthMicroservice.Application.Services
 
             return _mapper.Map<UserDetailDTOProto>(userDetail);
         }
+
+        // public override async Task<UserListDTOProto> Update(UserUpdateDTOProto request, ServerCallContext context)
+        // {
+        //     var userId = context.GetHttpContext().Cla;
+        //     ;
+        //     IUserUpdateDTO userData = _mapper.Map<IUserUpdateDTO>(user);
+
+        // }
     }
 }

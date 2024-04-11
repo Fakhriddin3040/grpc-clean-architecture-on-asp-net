@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package services.authentication;
 
-service AuthenticationService {
+service AuthenticationGrpcService {
 
     rpc Register(AuthRequest) returns (AuthResponse);
     rpc Login(AuthRequest) returns (AuthResponse);

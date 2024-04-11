@@ -1,4 +1,3 @@
-using AuthMicroservice.Domain.Entities;
 using AuthMicroservice.Domain.Interfaces.DTOs;
 
 namespace AuthMicroservice.Application.DTOs

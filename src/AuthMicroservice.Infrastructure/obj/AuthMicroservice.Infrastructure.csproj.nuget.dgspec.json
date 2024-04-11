@@ -4,6 +4,102 @@
     "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Infrastructure/AuthMicroservice.Infrastructure.csproj": {}
   },
   "projects": {
+    "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/AuthMicroservice.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/AuthMicroservice.Application.csproj",
+        "projectName": "AuthMicroservice.Application",
+        "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/AuthMicroservice.Application.csproj",
+        "packagesPath": "/home/ren/.nuget/packages/",
+        "outputPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ren/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj": {
+                "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Bcrypt.Net": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.62.0, )"
+            },
+            "Grpc.AspNetCore.Server.Reflection": {
+              "target": "Package",
+              "version": "[2.62.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -106,6 +202,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/AuthMicroservice.Application.csproj": {
+                "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Application/AuthMicroservice.Application.csproj"
+              },
               "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj": {
                 "projectPath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Domain/AuthMicroservice.Domain.csproj"
               }
@@ -127,6 +226,26 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Bcrypt.Net": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
+            "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.62.0, )"
+            },
+            "Grpc.AspNetCore.Server.Reflection": {
+              "target": "Package",
+              "version": "[2.62.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.3, )"
@@ -140,6 +259,14 @@
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[8.0.3, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.5.1, )"
             }
           },
           "imports": [

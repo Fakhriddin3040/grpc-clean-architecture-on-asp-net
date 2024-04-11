@@ -16,3 +16,5 @@
 /home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Infrastructure/obj/Debug/net8.0/ref/AuthMicroservice.Infrastructure.dll
 /home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Infrastructure/bin/Debug/net8.0/AuthMicroservice.Infrastructure.runtimeconfig.json
 /home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Infrastructure/obj/Debug/net8.0/AuthMicroservice.Infrastructure.genruntimeconfig.cache
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Infrastructure/bin/Debug/net8.0/AuthMicroservice.Application.dll
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Infrastructure/bin/Debug/net8.0/AuthMicroservice.Application.pdb

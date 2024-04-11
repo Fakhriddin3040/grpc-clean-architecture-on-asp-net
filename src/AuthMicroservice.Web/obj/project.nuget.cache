@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/Wp+6mN01tw46SOtMu1lz7dWaySpthcCmgDYQ9cD+7FV4wniSz/rSqvsBmeuJtjj/Ncpixe1ofe5as4Ywnefhw==",
+  "dgSpecHash": "K1mGg2s6dU7Zg0Ws2s2Krj7IwNCaZ7wxLrCLTk5twiEL0CQ7XlJ/fweG6umQSEfDuLmqPmAuulvSW9loVARwkw==",
   "success": true,
   "projectFilePath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Web/AuthMicroservice.Web.csproj",
   "expectedPackageFiles": [
@@ -19,7 +19,7 @@
     "/home/ren/.nuget/packages/grpc.reflection/2.62.0/grpc.reflection.2.62.0.nupkg.sha512",
     "/home/ren/.nuget/packages/grpc.tools/2.62.0/grpc.tools.2.62.0.nupkg.sha512",
     "/home/ren/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
-    "/home/ren/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/8.0.3/microsoft.aspnetcore.authentication.jwtbearer.8.0.3.nupkg.sha512",
+    "/home/ren/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/8.0.4/microsoft.aspnetcore.authentication.jwtbearer.8.0.4.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.codeanalysis.analyzers/3.3.3/microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.codeanalysis.common/4.5.0/microsoft.codeanalysis.common.4.5.0.nupkg.sha512",
@@ -39,7 +39,7 @@
     "/home/ren/.nuget/packages/microsoft.extensions.caching.memory/8.0.0/microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.extensions.configuration.abstractions/8.0.0/microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
-    "/home/ren/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "/home/ren/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.1/microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.extensions.dependencymodel/8.0.0/microsoft.extensions.dependencymodel.8.0.0.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.extensions.http/6.0.0/microsoft.extensions.http.6.0.0.nupkg.sha512",
     "/home/ren/.nuget/packages/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.8.0.0.nupkg.sha512",

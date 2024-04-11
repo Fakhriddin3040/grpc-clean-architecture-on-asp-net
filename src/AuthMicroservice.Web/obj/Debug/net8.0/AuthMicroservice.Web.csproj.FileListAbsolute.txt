@@ -147,3 +147,4 @@
 /home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Web/bin/Debug/net8.0/AutoMapper.dll
 /home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Web/bin/Debug/net8.0/BCrypt.Net.dll
 /home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Web/bin/Debug/net8.0/FluentValidation.dll
+/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Web/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll

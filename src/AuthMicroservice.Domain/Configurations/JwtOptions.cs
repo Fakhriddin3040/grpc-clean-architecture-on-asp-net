@@ -29,7 +29,7 @@ namespace AuthMicroservice.Domain.Configurations
 
         public static List<Claim> GetClaims(Guid userId) => new List<Claim>
         {
-            new Claim(ClaimsIdentity.DefaultNameClaimType, userId.ToString()),
+            new Claim(ClaimTypes.NameIdentifier, userId.ToString()),
         };
 
         public static SigningCredentials GetSigningCredentials() =>

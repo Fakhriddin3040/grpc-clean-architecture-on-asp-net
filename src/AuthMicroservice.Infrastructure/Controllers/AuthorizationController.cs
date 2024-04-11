@@ -6,16 +6,16 @@ using AuthMicroservice.Domain.Interfaces.DTOs;
 using AuthMicroservice.Domain.Interfaces.Services;
 using Services.Authentication;
 
-namespace AuthMicroservice.Application;
+namespace AuthMicroservice.Infrastructure.Controllers;
 
-public class JwtAuthGrpcService : AuthenticationService.AuthenticationServiceBase
+public class AuthorizationController : AuthenticationGrpcService.AuthenticationGrpcServiceBase
 {
     IUserService _userService;
     IPasswordService _passwordService;
     IMapper _mapper;
     IJwtService _jwtService;
 
-    public JwtAuthGrpcService(
+    public AuthorizationController(
         IMapper mapper,
         IJwtService jwtService,
         IUserService userService,

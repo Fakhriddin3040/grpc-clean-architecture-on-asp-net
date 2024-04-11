@@ -1,6 +1,4 @@
-using System.Linq;
 using System.Linq.Expressions;
-using System.Security.Cryptography;
 using AuthMicroservice.Application.DTOs;
 using AuthMicroservice.Domain.Entities;
 using AuthMicroservice.Domain.Interfaces.DTOs;
@@ -10,7 +8,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Grpc.Core;
 
-namespace AuthMicroservice.Application.Services
+namespace AuthMicroservice.Infrastructure.Services
 {
     public class UserService : IUserService
     {
