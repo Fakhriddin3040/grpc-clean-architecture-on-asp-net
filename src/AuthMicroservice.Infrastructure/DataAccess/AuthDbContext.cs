@@ -13,7 +13,7 @@ public class AuthDbContext : DbContext, IAuthDbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.ApplyConfiguration(new AuthEntitiesConfiguration());
+        builder.ApplyConfiguration(new UserEntityConfiguration());
         base.OnModelCreating(builder);
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

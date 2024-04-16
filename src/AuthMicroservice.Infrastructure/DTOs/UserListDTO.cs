@@ -1,16 +1,13 @@
-using AuthMicroservice.Domain.Interfaces.DTOs;
+using AuthMicroservice.Domain.Abstracts.Fields;
 
-namespace AuthMicroservice.Application.DTOs
+namespace AuthMicroservice.Infrastructure.DTOs
 {
-    public class UserListDTO : IUserListDTO
+    public class UserListDTO
     {
         public Guid Id { get; set; }
 
-        public string Username { get; set; }
 
         public string FirstName { get; set; }
-
-        public string Salt { get; set; }
 
         public string LastName { get; set; }
 

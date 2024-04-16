@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
 using AuthMicroservice.Domain.Interfaces.Fields;
 
-public interface ISqlRepositoryAsync<T> where T : IGuid
+public interface ISqlRepositoryAsync<T> where T : IBaseEntity
 {
     Task<IQueryable<T>> GetAllAsync();
     Task<T> GetDetailAsync(Guid id);

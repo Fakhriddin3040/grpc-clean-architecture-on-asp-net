@@ -1,6 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using AuthMicroservice.Domain.Configurations;
-using AuthMicroservice.Domain.Interfaces.Services;
+using AuthMicroservice.Infrastructure.Interfaces.Services;
 
 namespace AuthMicroservice.Infrastructure.Services
 {

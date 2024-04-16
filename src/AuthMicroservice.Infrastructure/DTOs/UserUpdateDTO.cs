@@ -1,25 +1,25 @@
-using AuthMicroservice.Domain.Interfaces.DTOs;
 
-namespace AuthMicroservice.Application.DTOs
+
+namespace AuthMicroservice.Infrastructure.DTOs
 {
-    public class UserDetailDTO : IUserDetailDTO
+    public class UserUpdateDTO
     {
         public Guid Id { get; set; }
 
         public string Username { get; set; }
 
-        public string Role { get; set; }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
 
-        public int? Age { get; set; }
+        
 
-        public DateOnly? Birthday { get; set; }
+        public int? Age { get; set; }
 
         public string Email { get; set; }
 
         public string Phone { get; set; }
+
+        public DateTime? Birthday { get; set; }
     }
 }

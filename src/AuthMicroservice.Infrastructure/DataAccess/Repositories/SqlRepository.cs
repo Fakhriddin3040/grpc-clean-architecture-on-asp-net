@@ -5,7 +5,7 @@ using AuthMicroservice.Domain.Interfaces.Fields;
 
 namespace AuthMicroservice.Infrastructure.DataAccess.Repositories;
 
-public class SqlRepository<T> : ISqlRepository<T>, ISqlRepositoryAsync<T> where T : class, IGuid
+public class SqlRepository<T> : ISqlRepository<T>, ISqlRepositoryAsync<T> where T : class, IBaseEntity
 {
     private readonly DbContext _context;
 

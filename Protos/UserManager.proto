@@ -13,6 +13,7 @@ service UserGrpcManager {
     rpc GetAll(google.protobuf.Empty) returns (stream UserListDTOProto);
     rpc GetDetail(UserLookup) returns (UserDetailDTOProto);
     rpc Create(UserCreateDTOProto) returns (UserListDTOProto);
+    rpc UpdateMe(UserUpdateMeDTOProto) returns (UserListDTOProto);
     rpc Update(UserUpdateDTOProto) returns (UserListDTOProto);
     rpc Delete(UserLookup) returns (google.protobuf.Empty);
 }
@@ -69,13 +70,24 @@ message UserCreateDTOProto {
 message UserUpdateDTOProto {
     string id = 1;
     string username = 2;
-    google.protobuf.StringValue firstName = 4;
-    google.protobuf.StringValue lastName = 5;
-    int32 age = 6;
-    google.protobuf.StringValue email = 7;
-    google.protobuf.StringValue phone = 8;    
-    google.protobuf.Timestamp birthday = 9;
+    google.protobuf.StringValue firstName = 3;
+    google.protobuf.StringValue lastName = 4;
+    int32 age = 5;
+    google.protobuf.StringValue email = 6;
+    google.protobuf.StringValue phone = 7;
+    google.protobuf.Timestamp birthday = 8;
 }
+
+message UserUpdateMeDTOProto {
+    string username = 1;
+    google.protobuf.StringValue firstName = 2;
+    google.protobuf.StringValue lastName = 3;
+    int32 age = 4;
+    google.protobuf.StringValue email = 5;
+    google.protobuf.StringValue phone = 6;
+    google.protobuf.Timestamp birthday = 7;
+}
+
 
 // UserDetailDTOProto represents detailed information about a user.
 message UserDetailDTOProto {

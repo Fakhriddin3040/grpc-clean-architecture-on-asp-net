@@ -1,4 +1,4 @@
-namespace AuthMicroservice.Domain.Interfaces.Services
+namespace AuthMicroservice.Infrastructure.Interfaces.Services
 {
     public interface IJwtService
     {

@@ -30,7 +30,7 @@ namespace AuthMicroservice.Web.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly?>("Birthday")
+                    b.Property<DateTime?>("Birthday")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("CreatedAt")

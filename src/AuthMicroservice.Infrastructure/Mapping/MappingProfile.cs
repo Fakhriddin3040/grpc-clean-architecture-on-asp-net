@@ -1,11 +1,13 @@
 using System.Reflection;
-using AuthMicroservice.Application.DTOs;
+using AuthMicroservice.Infrastructure.DTOs;
 using AuthMicroservice.Domain.Entities;
+
 using AuthMicroservice.Domain.ValueObjects;
 using AuthMicroservice.ProtoServices;
 using AutoMapper;
+using Google.Protobuf.WellKnownTypes;
 
-namespace AuthMicroservice.Application.Common.Mapping
+namespace AuthMicroservice.Infrastructure.Common.Mapping
 {
     public class MappingProfile : Profile
     {
@@ -13,10 +15,51 @@ namespace AuthMicroservice.Application.Common.Mapping
         {
             ApplyUsersDTOsMapping();
             ApplyUsersGrpcDTOsMapping();
+            ApplyMappingConvertRules();
         }
 
         private void ApplyUsersDTOsMapping()
         {
+        }
+
+        private void ApplyUsersGrpcDTOsMapping()
+        {
+            var config = new MapperConfiguration(cfg => 
+            {
+                cfg.AllowNullDestinationValues = true;
+                cfg.AllowNullCollections = true;
+            });
+            CreateMap<User, UserProto>()
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
+                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
+
+            CreateMap<UserProto, User>()
+                .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
+
+            CreateMap<UserListDTO, UserListDTOProto>();
+
+            CreateMap<UserDetailDTO, UserDetailDTOProto>();
+
+            CreateMap<UserCreateDTO, UserCreateDTOProto>();
+
+            CreateMap<UserListDTO, UserCreateDTO>();
+
+            CreateMap<UserDetailDTO, UserCreateDTO>();
+
+            CreateMap<UserAuthDTO, UserDetailDTO>();
+
+            CreateMap<UserAuthDTO, UserListDTO>();
+
+            CreateMap<UserDetailDTO, UserAuthDTO>();
+
+            CreateMap<UserListDTO, UserAuthDTO>();
+
+            CreateMap<UserUpdateDTO, UserUpdateDTOProto>();
+
+            CreateMap<UserListDTOProto, UserListDTO>();
+
+            CreateMap<UserDetailDTOProto, UserDetailDTO>();
+
             CreateMap<User, UserListDTO>()
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
                 .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
@@ -44,33 +87,24 @@ namespace AuthMicroservice.Application.Common.Mapping
 
             CreateMap<UserDetailDTO, User>()
                 .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
-        }
-
-        private void ApplyUsersGrpcDTOsMapping()
-        {
-            var config = new MapperConfiguration(cfg => 
-            {
-                cfg.AllowNullDestinationValues = true;
-                cfg.AllowNullCollections = true;
-            });
-            CreateMap<User, UserProto>()
-                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Contacts.Email))
-                .ForMember(dest => dest.Phone, opt => opt.MapFrom(src => src.Contacts.Phone));
-
-            CreateMap<UserProto, User>()
-                .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
-
-            CreateMap<UserListDTO, UserListDTOProto>();
-
-            CreateMap<UserDetailDTO, UserDetailDTOProto>();
-
-            CreateMap<UserCreateDTO, UserCreateDTOProto>();
-
-            CreateMap<UserUpdateDTO, UserUpdateDTOProto>();
 
             CreateMap<UserListDTOProto, UserListDTO>();
 
+            CreateMap<UserDetailDTO, UserDetailDTOProto>();
+
             CreateMap<UserDetailDTOProto, UserDetailDTO>();
+
+            CreateMap<UserCreateDTO, UserCreateDTOProto>();
+
+            CreateMap<UserCreateDTOProto, UserCreateDTO>();
+
+            CreateMap<UserUpdateDTO, UserUpdateDTOProto>();
+
+            CreateMap<UserUpdateDTOProto, UserUpdateDTO>();
+
+            CreateMap<UserCreateDTOProto, UserListDTO>(); 
+
+            CreateMap<UserDetailDTO, UserDetailDTO>();
 
             CreateMap<UserUpdateDTOProto, UserUpdateDTO>();
 
@@ -93,17 +127,38 @@ namespace AuthMicroservice.Application.Common.Mapping
             //     .ForMember(dest => dest.Contacts, opt => opt.MapFrom(src => new Contacts(src.Email, src.Phone)));
         }
 
+        private void ApplyMappingConvertRules()
+        {
+            CreateMap<Timestamp, DateTime>()
+                .ConvertUsing(tms => tms.ToDateTime());
+
+            CreateMap<DateTime, Timestamp>()
+                .ConvertUsing(dt => dt.ToTimestamp());
+
+            CreateMap<Timestamp, DateOnly>()
+                .ConvertUsing(tms => DateOnly.Parse(tms.ToString()));
+
+            CreateMap<DateOnly, Timestamp>()
+                .ConvertUsing(d => d.ToDateTime(default).ToTimestamp());
+
+            CreateMap<StringValue, string>()
+                .ConvertUsing(sv => sv.Value);
+
+            CreateMap<string, StringValue>()
+                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src));
+        }
+
         private void ApplyMappingsFromAssembly(Assembly assembly)
         {
             var mapFromTypes = typeof(IMapFrom<>);
 
             var mappingMethodName = nameof(IMapFrom<object>.Mapping);
 
-            bool HasInterface(Type t) => t.IsGenericType && t.GetGenericTypeDefinition() == mapFromTypes;
+            bool HasInterface(System.Type t) => t.IsGenericType && t.GetGenericTypeDefinition() == mapFromTypes;
 
             var types = assembly.GetExportedTypes().Where(t => t.GetInterfaces().Any(HasInterface)).ToList();
 
-            var argumentTypes = new Type[] {typeof(Profile)};
+            var argumentTypes = new System.Type[] {typeof(Profile)};
 
             foreach (var type in types)
             {

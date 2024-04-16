@@ -1,6 +1,6 @@
 using AutoMapper;
 
-namespace AuthMicroservice.Application.Common.Mapping
+namespace AuthMicroservice.Infrastructure.Common.Mapping
 {
     public interface IMapFrom<T>
     {

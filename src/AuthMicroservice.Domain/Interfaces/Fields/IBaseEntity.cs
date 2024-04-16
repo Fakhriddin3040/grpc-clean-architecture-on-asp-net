@@ -1,7 +1,7 @@
 namespace AuthMicroservice.Domain.Interfaces.Fields
 {
-    public interface ISalt
+    public interface IBaseEntity
     {
-        string Salt { get; set; }
+        Guid Id { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-namespace AuthMicroservice.Domain.Interfaces.Services
+namespace AuthMicroservice.Infrastructure.Interfaces.Services
 {
     public interface IPasswordService
     {
@@ -6,7 +6,7 @@ namespace AuthMicroservice.Domain.Interfaces.Services
 
         string HashPassword(string password, string salt);
 
-        bool VerifyPassword(string text, string hashed, string salt);
+        bool VerifyPassword(string password, string hashed, string salt);
 
         string GeneratePassword(int length);
     }

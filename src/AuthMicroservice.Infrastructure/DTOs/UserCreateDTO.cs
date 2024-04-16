@@ -1,18 +1,18 @@
-using AuthMicroservice.Domain.Interfaces.DTOs;
+using AuthMicroservice.Domain.Abstracts.Fields;
+using AuthMicroservice.Domain.Interfaces.Fields;
 
-namespace AuthMicroservice.Application.DTOs
+namespace AuthMicroservice.Infrastructure.DTOs
 {
-    public class UserUpdateDTO : IUserUpdateDTO
+    public class UserCreateDTO : SaltGenerator, IBaseEntity
     {
         public Guid Id { get; set; }
-
         public string Username { get; set; }
+
+        public string Password { get; set; }
 
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
-        public string Salt { get; set; }
 
         public int? Age { get; set; }
 
@@ -20,6 +20,6 @@ namespace AuthMicroservice.Application.DTOs
 
         public string Phone { get; set; }
 
-        public DateOnly? Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
     }
 }

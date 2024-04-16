@@ -1,9 +1,8 @@
 
-using AuthMicroservice.Application.Common.Mapping;
-using AuthMicroservice.Domain.Configurations;
+using AuthMicroservice.Infrastructure.Common.Mapping;
 using AuthMicroservice.Domain.Interfaces;
 using AuthMicroservice.Domain.Interfaces.Repositories;
-using AuthMicroservice.Domain.Interfaces.Services;
+using AuthMicroservice.Infrastructure.Interfaces.Services;
 using AuthMicroservice.Infrastructure.Controllers;
 using AuthMicroservice.Infrastructure.DataAccess;
 using AuthMicroservice.Infrastructure.DataAccess.Repositories;
@@ -15,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using AuthMicroservice.Domain.Configurations;
 
 namespace AuthMicroservice.Infrastructure.DependencyInjection;
 
@@ -74,7 +74,6 @@ public static class DependencyInjection
             {
                 endpoints.MapGrpcService<UserController>();
                 endpoints.MapGrpcService<AuthorizationController>();
-
                 endpoints.MapGrpcReflectionService();
             });
 

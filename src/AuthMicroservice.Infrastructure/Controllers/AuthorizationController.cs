@@ -1,10 +1,13 @@
 using Grpc.Core;
 using AutoMapper;
-using AuthMicroservice.Application.DTOs;
+using AuthMicroservice.Infrastructure.DTOs;
 using Microsoft.AspNetCore.Authorization;
-using AuthMicroservice.Domain.Interfaces.DTOs;
-using AuthMicroservice.Domain.Interfaces.Services;
+
+using AuthMicroservice.Infrastructure.Interfaces.Services;
 using Services.Authentication;
+using System.Diagnostics;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using FluentValidation;
 
 namespace AuthMicroservice.Infrastructure.Controllers;
 
@@ -30,43 +33,26 @@ public class AuthorizationController : AuthenticationGrpcService.AuthenticationG
 
     public override async Task<AuthResponse> Login(AuthRequest request, ServerCallContext context)
     {
-        IUserCreateDTO user = _mapper.Map<IUserCreateDTO>(await _userService.GetByUsername(request.Username));
+        var user = await _userService.AuthenticateUser(request.Username, request.Password);
 
-        if (user == null)
-        {
-            throw new RpcException(new Status(
-                StatusCode.NotFound, "Неверное имя пользователя или пароль."
-            ));
-        }
+        var token = _jwtService.GenerateAccessToken(user.Id);
 
-        string hashedPassword = _passwordService.HashPassword(user.Password, user.Salt);
-
-        bool correctAuth = _passwordService.VerifyPassword(user.Password, hashedPassword, user.Salt);
-
-        if (!correctAuth)
-        {
-            throw new RpcException(new Status(
-                StatusCode.NotFound, "Неверное имя пользователя или пароль."
-            ));
-        }
-
-        return new AuthResponse
-        {
-            Token = _jwtService.GenerateAccessToken(user.Id)
-        };
+        return await Task.FromResult( new 
+        AuthResponse {
+            Token = token
+        });
     }
 
     public override async Task<AuthResponse> Register(AuthRequest request, ServerCallContext context)
     {
         string salt = _passwordService.GenerateSalt();
-        IUserCreateDTO userCreateDTO = new UserCreateDTO() {
+        UserCreateDTO userCreateDTO = new UserCreateDTO() {
             Username = request.Username,
             Password = _passwordService.HashPassword(request.Password, salt),
-            Salt = salt,
             Age = 5
         };
 
-        IUserListDTO createdUser = await _userService.Create(userCreateDTO);
+        UserListDTO createdUser = await _userService.Create(userCreateDTO);
 
         string token = _jwtService.GenerateAccessToken(createdUser.Id);
 

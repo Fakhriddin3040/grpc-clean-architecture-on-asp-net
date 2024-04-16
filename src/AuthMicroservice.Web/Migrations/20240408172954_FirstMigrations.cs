@@ -26,7 +26,7 @@ namespace AuthMicroservice.Web.Migrations
                     Age = table.Column<int>(type: "INTEGER", maxLength: 80, nullable: true),
                     Contacts_Email = table.Column<string>(type: "TEXT", maxLength: 38, nullable: true),
                     Contacts_Phone = table.Column<string>(type: "TEXT", maxLength: 14, nullable: true),
-                    Birthday = table.Column<DateOnly>(type: "TEXT", nullable: true),
+                    Birthday = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: true, defaultValueSql: "datetime('now')"),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true, defaultValueSql: "datetime('now')")
                 },

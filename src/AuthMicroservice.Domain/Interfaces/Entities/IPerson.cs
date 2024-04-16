@@ -7,7 +7,7 @@ namespace AuthMicroservice.Domain.Interfaces.Entities
         string FirstName { get; set; }
         string LastName { get; set; }
         int? Age { get; set; }
-        DateOnly? Birthday { get; set; }
+        DateTime? Birthday { get; set; }
         Contacts Contacts { get; set; }
     }
 }

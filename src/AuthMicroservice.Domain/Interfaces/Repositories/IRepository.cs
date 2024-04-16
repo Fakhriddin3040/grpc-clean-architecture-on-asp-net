@@ -3,7 +3,7 @@ using AuthMicroservice.Domain.Interfaces.Fields;
 
 namespace AuthMicroservice.Domain.Interfaces.Repositories
 {
-    public interface IRepository<TEntity> where TEntity : IGuid
+    public interface IRepository<TEntity> where TEntity : IBaseEntity
     {
         IQueryable<TEntity> GetAll();
 

@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Linq.Expressions;
 using AuthMicroservice.Domain.Entities;
 using AuthMicroservice.Domain.Interfaces.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -34,17 +35,15 @@ namespace AuthMicroservice.Infrastructure.DataAccess.Repositories
 
         public async Task<bool> Create(IUser entity)
         {
-            var user = entity as User;
+            var user = entity as IUser;
             if (user == null)
-                throw new InvalidCastException("Entity is not of type User");
+                throw new InvalidCastException("Entity is not of type IUser");
 
-            user.IsActive = true;
-            user.Role = "Some role";
-
-            await _context.Users.AddAsync(user);
+            await _context.Users.AddAsync((User)user);
             return await SaveChanges();
         }
         
+        [Authorize()]
         public async Task<bool> Update(Guid id, IUser entity)
         {
             var user = await GetDetail(id);
