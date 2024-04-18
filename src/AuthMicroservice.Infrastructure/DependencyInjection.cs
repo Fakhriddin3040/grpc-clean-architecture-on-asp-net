@@ -2,11 +2,11 @@
 using AuthMicroservice.Infrastructure.Common.Mapping;
 using AuthMicroservice.Domain.Interfaces;
 using AuthMicroservice.Domain.Interfaces.Repositories;
-using AuthMicroservice.Infrastructure.Interfaces.Services;
+using AuthMicroservice.Application.Interfaces.Services;
 using AuthMicroservice.Infrastructure.Controllers;
 using AuthMicroservice.Infrastructure.DataAccess;
 using AuthMicroservice.Infrastructure.DataAccess.Repositories;
-using AuthMicroservice.Infrastructure.Services;
+using AuthMicroservice.Application.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,6 +15,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using AuthMicroservice.Domain.Configurations;
+using AuthMicroservice.Infrastructure.Services.Interfaces;
+using AuthMicroservice.Infrastructure.Services.Implementations;
 
 namespace AuthMicroservice.Infrastructure.DependencyInjection;
 
@@ -27,10 +29,11 @@ public static class DependencyInjection
             services.ConfigureDbContext(configuration);
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserDomainService, UserDomainService>();
             services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<IPasswordService, PasswordService>();
             services.AddScoped<IAuthDbContext, AuthDbContext>();
+            services.AddScoped<IUserService, UserService>();
 
 
             return services;

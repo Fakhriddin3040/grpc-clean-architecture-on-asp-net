@@ -3,11 +3,12 @@ using AutoMapper;
 using AuthMicroservice.Infrastructure.DTOs;
 using Microsoft.AspNetCore.Authorization;
 
-using AuthMicroservice.Infrastructure.Interfaces.Services;
+using AuthMicroservice.Application.Interfaces.Services;
 using Services.Authentication;
 using System.Diagnostics;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using FluentValidation;
+using AuthMicroservice.Infrastructure.Services.Interfaces;
 
 namespace AuthMicroservice.Infrastructure.Controllers;
 
@@ -33,7 +34,7 @@ public class AuthorizationController : AuthenticationGrpcService.AuthenticationG
 
     public override async Task<AuthResponse> Login(AuthRequest request, ServerCallContext context)
     {
-        var user = await _userService.AuthenticateUser(request.Username, request.Password);
+        var user = await _userService.Authenticate(request.Username, request.Password);
 
         var token = _jwtService.GenerateAccessToken(user.Id);
 

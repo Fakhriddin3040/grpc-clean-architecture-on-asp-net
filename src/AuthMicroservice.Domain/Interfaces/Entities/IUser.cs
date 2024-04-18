@@ -1,4 +1,3 @@
-using AuthMicroservice.Domain.Abstracts.Fields;
 using AuthMicroservice.Domain.Interfaces.Entities;
 using AuthMicroservice.Domain.Interfaces.Fields;
 

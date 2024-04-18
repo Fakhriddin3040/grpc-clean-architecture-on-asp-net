@@ -56,6 +56,12 @@ namespace AuthMicroservice.Infrastructure.Common.Mapping
 
             CreateMap<UserUpdateDTO, UserUpdateDTOProto>();
 
+            CreateMap<UserUpdateDTOProto, UserUpdateDTO>();
+
+            CreateMap<UserUpdateMeDTOProto, UserUpdateDTO>();
+
+            CreateMap<UserUpdateDTO, UserUpdateMeDTOProto>();
+
             CreateMap<UserListDTOProto, UserListDTO>();
 
             CreateMap<UserDetailDTOProto, UserDetailDTO>();

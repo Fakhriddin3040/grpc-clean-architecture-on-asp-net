@@ -1,14 +1,15 @@
-using AuthMicroservice.Domain.Abstracts.Fields;
 using AuthMicroservice.Domain.Interfaces.Fields;
 
 namespace AuthMicroservice.Infrastructure.DTOs
 {
-    public class UserCreateDTO : SaltGenerator, IBaseEntity
+    public class UserCreateDTO : IBaseEntity
     {
         public Guid Id { get; set; }
         public string Username { get; set; }
 
         public string Password { get; set; }
+
+        public string Salt { get; set; }
 
         public string FirstName { get; set; }
 

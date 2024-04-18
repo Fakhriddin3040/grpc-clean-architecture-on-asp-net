@@ -1,11 +1,8 @@
-using AuthMicroservice.Domain.Abstracts.Fields;
-
 namespace AuthMicroservice.Infrastructure.DTOs
 {
     public class UserListDTO
     {
         public Guid Id { get; set; }
-
 
         public string FirstName { get; set; }
 

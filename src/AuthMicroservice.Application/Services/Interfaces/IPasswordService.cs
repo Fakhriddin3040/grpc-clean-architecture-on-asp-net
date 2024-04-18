@@ -1,4 +1,4 @@
-namespace AuthMicroservice.Infrastructure.Interfaces.Services
+namespace AuthMicroservice.Application.Interfaces.Services
 {
     public interface IPasswordService
     {

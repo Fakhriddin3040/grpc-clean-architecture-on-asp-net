@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CquTctxFHJ/vGtDMUTEkdB8m7/nQsGCFbOb/83koVWWxYJx2j+ym2OcMx0Y2Wk0wAopaIupHFizxI/+/WZ5RcA==",
+  "dgSpecHash": "yGTiZMsDDSxnWqL7Zb5czpoJPbiDu8LZ0gXJYy+uuQ9xBQcg7VCQxadUNlnthvhq7sUYdzvsfkANxzpGyZ0GLQ==",
   "success": true,
   "projectFilePath": "/home/ren/Development/Projects/csharp/Auth/AuthMicroservice/src/AuthMicroservice.Web/AuthMicroservice.Web.csproj",
   "expectedPackageFiles": [

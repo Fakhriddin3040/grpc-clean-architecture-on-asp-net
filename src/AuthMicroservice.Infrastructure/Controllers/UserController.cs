@@ -3,11 +3,12 @@ using AuthMicroservice.Application.Common.Extensions;
 using AuthMicroservice.Infrastructure.DTOs;
 using AuthMicroservice.Domain.Entities;
 
-using AuthMicroservice.Infrastructure.Interfaces.Services;
+using AuthMicroservice.Application.Interfaces.Services;
 using AuthMicroservice.ProtoServices;
 using AutoMapper;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using AuthMicroservice.Infrastructure.Services.Interfaces;
 
 namespace AuthMicroservice.Infrastructure.Controllers
 {
@@ -29,7 +30,7 @@ namespace AuthMicroservice.Infrastructure.Controllers
             ServerCallContext context
             )
         {
-            List<UserListDTO> users = _userService.GetAll().ToList();
+            List<UserListDTO> users = _userService.GetAllUsers().ToList();
 
             for (int i = 0; i < users.Count(); i++)
             {
@@ -42,7 +43,7 @@ namespace AuthMicroservice.Infrastructure.Controllers
             UserLookup request,
             ServerCallContext context)
         {
-            UserDetailDTO userDetail = await _userService.GetDetail(Guid.Parse(request.Id));
+            UserDetailDTO userDetail = await _userService.GetUserDetail(Guid.Parse(request.Id));
 
             return _mapper.Map<UserDetailDTOProto>(userDetail);
         }

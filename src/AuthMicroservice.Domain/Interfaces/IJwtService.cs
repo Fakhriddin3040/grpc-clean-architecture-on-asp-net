@@ -1,10 +1,8 @@
-namespace AuthMicroservice.Infrastructure.Interfaces.Services
+namespace AuthMicroservice.Application.Interfaces.Services
 {
     public interface IJwtService
     {
         string GenerateAccessToken(Guid userId);
-
-        public 
 
         string GenerateRefreshToken();
 

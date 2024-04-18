@@ -880,14 +880,8 @@
       "AuthMicroservice.Application/1.0.0": {
         "dependencies": {
           "AuthMicroservice.Domain": "1.0.0",
-          "AutoMapper": "13.0.1",
           "BCrypt.Net": "0.1.0",
-          "FluentValidation": "11.9.0",
-          "Grpc.AspNetCore": "2.62.0",
-          "Grpc.AspNetCore.Server.Reflection": "2.62.0",
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.4",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.1",
-          "System.IdentityModel.Tokens.Jwt": "7.5.1"
+          "FluentValidation": "11.9.0"
         },
         "runtime": {
           "AuthMicroservice.Application.dll": {}

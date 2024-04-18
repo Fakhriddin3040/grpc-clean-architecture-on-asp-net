@@ -1,7 +1,7 @@
 ﻿using AuthMicroservice.Domain.Configurations;
-using AuthMicroservice.Infrastructure.Interfaces.Services;
+using AuthMicroservice.Application.Interfaces.Services;
 
-namespace AuthMicroservice.Infrastructure.Services
+namespace AuthMicroservice.Application.Services
 {
     public class PasswordService : IPasswordService
     {

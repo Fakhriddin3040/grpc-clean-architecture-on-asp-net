@@ -1,157 +1,93 @@
-using System.Linq.Expressions;
+using AuthMicroservice.Application.Interfaces.Services;
 using AuthMicroservice.Infrastructure.DTOs;
-using AuthMicroservice.Domain.Entities;
-using AuthMicroservice.Domain.Interfaces.Repositories;
-using AuthMicroservice.Infrastructure.Interfaces.Services;
+using AuthMicroservice.Application;
+using AuthMicroservice.Infrastructure.Services.Interfaces;
 using AutoMapper;
-using Grpc.Core;
-using AuthMicroservice.Domain.Exceptions;
+using System.Security.Authentication;
+using Microsoft.EntityFrameworkCore;
+using AuthMicroservice.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 
-namespace AuthMicroservice.Infrastructure.Services
+namespace AuthMicroservice.Infrastructure.Services.Implementations
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepository _repository;
-
-        private readonly IMapper _mapper;
-
-        private readonly IPasswordService _passwordService;
+        IMapper _mapper;
+        IPasswordService _passwordService;
+        IUserDomainService _userDomainService;
 
         public UserService(
-            IMapper mapper, 
-            IUserRepository repository, 
-            IPasswordService passwordService)
+            IMapper mapper,
+            IPasswordService passwordService,
+            IUserDomainService userDomainService
+        )
         {
-            _passwordService = passwordService;
-            _repository = repository;
             _mapper = mapper;
+            _passwordService = passwordService;
+            _userDomainService = userDomainService;
         }
-
-        public IQueryable<UserListDTO> GetAll(int pageNumber = 1, int pageSize = 10)
-        {
-            var users = _repository.GetAll()
-                .Select(user => _mapper.Map<UserListDTO>(user))
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize);
-
-            return users;
-        }
-
-        public async Task<UserDetailDTO> GetDetail(Guid id)
-        {
-            var user = await _repository.GetDetail(id);
-            return _mapper.Map<UserDetailDTO>(user);
-        }
-
-        public async Task<UserListDTO> GetById(Guid id)
-        {
-            var user = await _repository.GetDetail(id);
-            
-            if (user == null)
-            {
-                throw new RpcException(new Status(StatusCode.NotFound, "User not found"));
-            }
-
-            return _mapper.Map<UserListDTO>(user);
-        }
-
-        public async Task<UserDetailDTO> GetByUsername(string username)
-        {
-            var user = await _repository.GetByUsername(username);
-
-            if (user == null)
-            {
-                throw new EntityNotFoundException();
-            }
-
-            return _mapper.Map<UserDetailDTO>(user);
-        }
-
-        public async Task<UserDetailDTO> AuthenticateUser(string username, string password)
+        public async Task<UserAuthDTO> Authenticate(string username, string password)
         {
             var user = await GetByUsername(username);
 
             if (user == null)
             {
-                throw new EntityNotFoundException();
+                throw new AuthenticationException();
             }
 
-            var hashedPassword = _passwordService.HashPassword(password, user.Salt);
+            bool validPassword = 
+                _passwordService.VerifyPassword(password, user.Password, user.Salt);
 
-            bool correctAuth = _passwordService.VerifyPassword(password, user.Salt, hashedPassword);
-
-            if (!correctAuth)
+            if (!validPassword)
             {
-                throw new EntityNotFoundException();
+                throw new AuthenticationException();
             }
 
-            return user;
+            return _mapper.Map<UserAuthDTO>(user);
         }
 
-        public async Task<UserListDTO> Create(UserCreateDTO userDto)
+        public async Task<UserListDTO> Create(UserCreateDTO userCreateDTO)
         {
-            User newUser = _mapper.Map<User>(userDto);
+            var userCreate = _mapper.Map<User>(userCreateDTO);
 
-            newUser.Password = _passwordService.HashPassword(newUser.Password, newUser.Salt);
+            userCreate.Salt = _passwordService.GenerateSalt();
+            userCreate.Password = _passwordService.HashPassword(userCreateDTO.Password, userCreate.Salt);
 
-            bool created = await _repository.Create(newUser);
+            var createdUser = await _userDomainService.Create(userCreate);
 
-            if (!created)
-            {
-                throw new RpcException(new Status(StatusCode.Internal, "User creation failed"));
-            }
-
-            UserListDTO createdUser = await GetById(newUser.Id);
-
-            return createdUser;
-        }
-
-        public async Task<UserListDTO> Update(Guid id, UserUpdateDTO userUpdateDTO)
-        {
-            var user = await _repository.GetDetail(id);
-
-            if (user == null)
-            {
-                throw new EntityNotFoundException();
-            }
-
-            _mapper.Map(userUpdateDTO, user);
-
-            bool updated = await _repository.Update(id, user); 
-
-            if (!updated)
-            {
-                throw new RpcException(new Status(StatusCode.Internal, "User update failed"));
-            }
-
-            return _mapper.Map<UserListDTO>(user);
+            return _mapper.Map<UserListDTO>(createdUser);
         }
 
         public async Task Delete(Guid id)
         {
-            var user = await _repository.GetDetail(id);
-
-            if (user == null)
-            {
-                throw new EntityNotFoundException();
-            }
-
-            bool deleted = await _repository.Delete(user);
-
-            if (!deleted)
-            {
-                throw new EntityNotFoundException();
-            }
+            await _userDomainService.Delete(id);
         }
 
-        public async Task<bool> Exists(Expression<Func<IUser, bool>> expression)
+        public IQueryable<UserListDTO> GetAllUsers()
         {
-            return await _repository.Any(expression);
+            return _mapper.Map<IQueryable<UserListDTO>>(_userDomainService.GetAll());
         }
 
-        public async Task SaveChanges()
+        public async Task<UserDetailDTO> GetByUsername(string username)
         {
-            await _repository.SaveChanges();
+            var user = await  _userDomainService.GetAll().SingleOrDefaultAsync(d => d.Username == username);
+
+            return _mapper.Map<UserDetailDTO>(user);
+        }
+
+        public async Task<UserDetailDTO> GetUserDetail(Guid id)
+        {
+            var user = await _userDomainService.GetDetail(id);
+            return _mapper.Map<UserDetailDTO>(user);
+        }
+
+        public async Task<UserListDTO> Update(Guid id, UserUpdateDTO userUpdateDTO)
+        {
+            var userUpdate = _mapper.Map<User>(userUpdateDTO);
+
+            var response = await _userDomainService.Update(id, userUpdate);
+
+            return _mapper.Map<UserListDTO>(response);
         }
     }
 }

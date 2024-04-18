@@ -1,5 +1,4 @@
 using AuthMicroservice.Domain.Abstracts;
-using AuthMicroservice.Domain.Abstracts.Fields;
 using AuthMicroservice.Domain.Interfaces;
 using AuthMicroservice.Domain.Interfaces.Entities;
 using AuthMicroservice.Domain.Interfaces.ValueObjects;
@@ -23,4 +22,6 @@ public class User : BaseUser, IUser
     public DateTime? CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
+
+
 }

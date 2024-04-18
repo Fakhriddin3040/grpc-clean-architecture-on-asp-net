@@ -2,11 +2,12 @@ using System.Security.Claims;
 using AuthMicroservice.Domain.Entities;
 using AuthMicroservice.Infrastructure.DTOs;
 
-using AuthMicroservice.Infrastructure.Interfaces.Services;
+using AuthMicroservice.Application.Interfaces.Services;
 using AuthMicroservice.Infrastructure.Common.Exceptions;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using AuthMicroservice.Infrastructure.Services.Interfaces;
 
 namespace AuthMicroservice.Application.Common.Extensions
 {
@@ -37,10 +38,10 @@ namespace AuthMicroservice.Application.Common.Extensions
 
         private static async Task<IUser> GetUserAsync(HttpContext httpContext, Guid userId)
         {
-            IUserService userService = httpContext.RequestServices.GetRequiredService<IUserService>();
+            var userService = httpContext.RequestServices.GetRequiredService<IUserService>();
             IMapper mapper = httpContext.RequestServices.GetRequiredService<IMapper>();
 
-            UserDetailDTO userDetail = await userService.GetDetail(userId);
+            UserDetailDTO userDetail = await userService.GetUserDetail(userId);
             IUser user = mapper.Map<IUser>(userDetail);
 
             return user;
